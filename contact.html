@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Contact – The Storybook Play Cafe</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    :root{ --forest:#3e5f4a; --moss:#6b8f71; --paper:#f6f8f4; --ink:#2f3e2f; --card:#fff; }
+    *{ box-sizing:border-box; }
+    body{ margin:0; font-family:Georgia,serif; background:var(--paper); color:var(--ink); line-height:1.6; }
+    header{ background:var(--forest); color:#fff; padding:1.25rem 1rem; }
+    .topbar{ max-width:980px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; gap:1rem; }
+    nav a{ color:#fff; text-decoration:none; margin-left:.9rem; opacity:.95; }
+    .wrap{ max-width:980px; margin:0 auto; padding:1.25rem 1rem 2.5rem; }
+    .card{ background:var(--card); border-radius:18px; padding:1.5rem; margin:1rem 0; box-shadow:0 6px 18px rgba(0,0,0,.08); }
+    label{ display:block; font-weight:700; margin-top:1rem; }
+    input, textarea{ width:100%; padding:.85rem; border-radius:12px; border:1px solid #cfd8cf; margin-top:.35rem; background:#fff; }
+    textarea{ min-height:130px; }
+    button{ width:100%; background:var(--moss); color:#fff; border:none; padding:.95rem 1.15rem; border-radius:999px; font-size:1rem; margin-top:1.25rem; }
+    small{ opacity:.9; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="topbar">
+      <div style="font-weight:700;">The Storybook Play Cafe</div>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="booking.html">Booking</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="card">
+      <h1 style="margin:0;color:var(--forest);">Contact Us</h1>
+      <p>Send us a message and we’ll get back to you.</p>
+
+      <!-- Replace the action URL after you create a Formspree form -->
+      <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <label>Your name</label>
+        <input name="name" required />
+
+        <label>Email</label>
+        <input type="email" name="email" required />
+
+        <label>Message</label>
+        <textarea name="message" required></textarea>
+
+        <button type="submit">Send message</button>
+      </form>
+
+      <p style="margin-top:1rem;"><small>
+        Prefer email? info@thestorybookplaycafe.co.uk
+      </small></p>
+    </div>
+  </main>
+</body>
+</html>
