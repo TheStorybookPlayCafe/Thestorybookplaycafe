@@ -4,50 +4,89 @@
   <meta charset="UTF-8" />
   <title>The Storybook Play Cafe</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <style>
     body {
       margin: 0;
-      font-family: Georgia, serif;
-      background: #f3f7f2;
+      font-family: "Georgia", serif;
+      background: #f6f8f4;
       color: #2f3e2f;
-      text-align: center;
+      line-height: 1.6;
     }
+
     header {
       background: #3e5f4a;
       color: white;
-      padding: 2rem 1rem;
+      padding: 3rem 1.5rem;
+      text-align: center;
     }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      margin-top: 0.5rem;
+    }
+
     section {
-      padding: 2rem 1rem;
+      padding: 2.5rem 1.5rem;
+      max-width: 900px;
+      margin: auto;
     }
-    .box {
+
+    .card {
       background: white;
-      margin: 1rem auto;
+      border-radius: 18px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    h2 {
+      margin-top: 0;
+      color: #3e5f4a;
+    }
+
+    .sessions {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .session {
+      background: #eef3ee;
       padding: 1.5rem;
-      max-width: 600px;
-      border-radius: 16px;
+      border-radius: 14px;
     }
-    footer {
-      background: #3e5f4a;
-      color: white;
-      padding: 1rem;
-      font-size: 0.9rem;
-    }
+
     button {
       background: #6b8f71;
       color: white;
       border: none;
-      padding: 12px 20px;
-      border-radius: 20px;
+      padding: 14px 22px;
+      border-radius: 25px;
       font-size: 1rem;
+      cursor: pointer;
+      margin-top: 1rem;
+    }
+
+    button:hover {
+      background: #5a7c61;
+    }
+
+    footer {
+      background: #3e5f4a;
+      color: white;
+      text-align: center;
+      padding: 1.5rem;
+      font-size: 0.9rem;
     }
   </style>
 </head>
+
 <body>
 
 <header>
-  <h1>The Storybook Play Cafe</h1>
-  <p>Where imagination comes to play</p>
-</header>
-
-<section>
+  <h1>The Story
