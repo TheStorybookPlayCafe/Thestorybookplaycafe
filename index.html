@@ -11,97 +11,53 @@
       --moss:#6b8f71;
       --paper:#f6f8f4;
       --ink:#2f3e2f;
+      --card:#ffffff;
+      --soft:#eef3ee;
     }
-
-    * { box-sizing: border-box; }
-
-    body{
-      margin:0;
-      font-family: Georgia, serif;
-      background: var(--paper);
-      color: var(--ink);
-      line-height:1.6;
+    *{ box-sizing:border-box; }
+    body{ margin:0; font-family: Georgia, serif; background:var(--paper); color:var(--ink); line-height:1.6; }
+    header{ background:var(--forest); color:#fff; padding:1.25rem 1rem 1.75rem; }
+    .topbar{ max-width:980px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; gap:1rem; }
+    .brand{ font-weight:700; letter-spacing:.2px; }
+    nav a{ color:#fff; text-decoration:none; margin-left:.9rem; opacity:.95; }
+    nav a:active{ opacity:.8; }
+    .hero{ max-width:980px; margin:0 auto; padding:1.5rem 0 .25rem; text-align:center; }
+    .hero h1{ margin:.25rem 0 0; font-size:clamp(2rem, 8vw, 3rem); line-height:1.1; }
+    .hero p{ margin:.75rem 0 0; opacity:.95; }
+    .wrap{ max-width:980px; margin:0 auto; padding:1.25rem 1rem 2.5rem; }
+    .card{ background:var(--card); border-radius:18px; padding:1.5rem; margin:1rem 0; box-shadow:0 6px 18px rgba(0,0,0,.08); }
+    h2{ margin:0 0 .75rem; color:var(--forest); font-size:1.35rem; }
+    .sessions{ display:grid; grid-template-columns:1fr; gap:.75rem; }
+    .session{ background:var(--soft); border-radius:14px; padding:1rem; }
+    .ctaRow{ display:flex; flex-wrap:wrap; gap:.75rem; margin-top:1rem; }
+    .btn{
+      display:inline-block; background:var(--moss); color:#fff; border:none;
+      padding:.9rem 1.15rem; border-radius:999px; font-size:1rem; text-decoration:none;
     }
-
-    header{
-      background: var(--forest);
-      color:#fff;
-      padding: 2rem 1rem;
-      text-align:center;
-    }
-
-    header h1{
-      margin:0;
-      font-size: clamp(2rem, 8vw, 3rem);
-      line-height:1.1;
-    }
-
-    header p{
-      margin: .75rem 0 0;
-      font-size: 1.05rem;
-      opacity:.95;
-    }
-
-    .wrap{
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 1.5rem 1rem 2.5rem;
-    }
-
-    .card{
-      background:#fff;
-      border-radius:18px;
-      padding:1.5rem;
-      margin: 1rem 0;
-      box-shadow: 0 6px 18px rgba(0,0,0,.08);
-    }
-
-    h2{
-      margin:0 0 .75rem;
-      color: var(--forest);
-      font-size: 1.4rem;
-    }
-
-    .sessions{
-      display:grid;
-      grid-template-columns: 1fr;
-      gap: .75rem;
-    }
-
-    .session{
-      background: #eef3ee;
-      border-radius:14px;
-      padding:1rem;
-    }
-
-    .cta{
-      display:inline-block;
-      margin-top: 1rem;
-      background: var(--moss);
-      color:#fff;
-      border:none;
-      padding: .9rem 1.2rem;
-      border-radius: 999px;
-      font-size: 1rem;
-      text-decoration:none;
-    }
-
-    .cta:active { transform: scale(.99); }
-
-    footer{
-      background: var(--forest);
-      color:#fff;
-      text-align:center;
-      padding:1rem;
-      font-size:.9rem;
-    }
+    .btn.secondary{ background:#2f3e2f; }
+    footer{ background:var(--forest); color:#fff; text-align:center; padding:1rem; font-size:.9rem; }
   </style>
 </head>
 
 <body>
   <header>
-    <h1>The Storybook Play Cafe</h1>
-    <p>Where imagination comes to play</p>
+    <div class="topbar">
+      <div class="brand">The Storybook Play Cafe</div>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="booking.html">Booking</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+
+    <div class="hero">
+      <h1>The Storybook Play Cafe</h1>
+      <p>Where imagination comes to play</p>
+      <div class="ctaRow" style="justify-content:center;">
+        <a class="btn" href="booking.html">Book a Play Session</a>
+        <a class="btn secondary" href="contact.html">Contact Us</a>
+      </div>
+    </div>
   </header>
 
   <main class="wrap">
@@ -116,14 +72,14 @@
     <section class="card">
       <h2>Play Sessions</h2>
       <p><strong>Open Monday – Sunday</strong></p>
-
       <div class="sessions">
         <div class="session"><strong>Morning Play</strong><br>9:00am – 11:00am</div>
         <div class="session"><strong>Midday Play</strong><br>11:30am – 1:30pm</div>
         <div class="session"><strong>Afternoon Play</strong><br>2:00pm – 4:00pm</div>
       </div>
-
-      <a class="cta" href="#booking">Book a Play Session</a>
+      <div class="ctaRow">
+        <a class="btn" href="booking.html">Book a Play Session</a>
+      </div>
     </section>
 
     <section class="card">
@@ -136,22 +92,18 @@
       </p>
     </section>
 
-    <section class="card" id="booking">
-      <h2>Booking</h2>
-      <p>
-        Online booking and Stripe payments are coming next. This section will link to your booking page.
-      </p>
-    </section>
-
     <section class="card">
-      <h2>Contact</h2>
-      <p>Email: <strong>info@thestorybookplaycafe.co.uk</strong></p>
-      <p>Phone: <strong>(add your number)</strong></p>
+      <h2>Gallery</h2>
+      <p>Add your photos here (we’ll replace these placeholders with real images).</p>
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:.75rem;">
+        <div style="height:120px;background:#dfe8df;border-radius:14px;"></div>
+        <div style="height:120px;background:#dfe8df;border-radius:14px;"></div>
+        <div style="height:120px;background:#dfe8df;border-radius:14px;"></div>
+        <div style="height:120px;background:#dfe8df;border-radius:14px;"></div>
+      </div>
     </section>
   </main>
 
-  <footer>
-    © The Storybook Play Cafe
-  </footer>
+  <footer>© The Storybook Play Cafe</footer>
 </body>
 </html>
