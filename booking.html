@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Booking – The Storybook Play Cafe</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    :root{ --forest:#3e5f4a; --moss:#6b8f71; --paper:#f6f8f4; --ink:#2f3e2f; --card:#fff; --soft:#eef3ee; }
+    *{ box-sizing:border-box; }
+    body{ margin:0; font-family:Georgia,serif; background:var(--paper); color:var(--ink); line-height:1.6; }
+    header{ background:var(--forest); color:#fff; padding:1.25rem 1rem; }
+    .topbar{ max-width:980px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; gap:1rem; }
+    nav a{ color:#fff; text-decoration:none; margin-left:.9rem; opacity:.95; }
+    .wrap{ max-width:980px; margin:0 auto; padding:1.25rem 1rem 2.5rem; }
+    .card{ background:var(--card); border-radius:18px; padding:1.5rem; margin:1rem 0; box-shadow:0 6px 18px rgba(0,0,0,.08); }
+    h1{ margin:.25rem 0 0; font-size:1.8rem; }
+    h2{ margin:0 0 .75rem; color:var(--forest); font-size:1.25rem; }
+    label{ display:block; font-weight:700; margin-top:1rem; }
+    input, select{ width:100%; padding:.85rem; border-radius:12px; border:1px solid #cfd8cf; margin-top:.35rem; background:#fff; }
+    .grid{ display:grid; grid-template-columns:1fr; gap:1rem; }
+    .note{ background:var(--soft); padding:1rem; border-radius:14px; }
+    .btn{
+      display:inline-block; background:var(--moss); color:#fff; border:none;
+      padding:.95rem 1.15rem; border-radius:999px; font-size:1rem; text-decoration:none;
+      width:100%; margin-top:1.25rem;
+    }
+    .err{ color:#8b1e1e; font-weight:700; margin-top:.75rem; }
+    .ok{ color:#1f6d2b; font-weight:700; margin-top:.75rem; }
+    .totalBox{ font-size:1.15rem; font-weight:700; margin-top:1rem; }
+    small{ opacity:.9; }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="topbar">
+      <div style="font-weight:700;">The Storybook Play Cafe</div>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="booking.html">Booking</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="card">
+      <h1>Book a Play Session</h1>
+      <p><strong>Open Monday – Sunday</strong></p>
+      <p><small>Prices are shown here during booking.</small></p>
+    </div>
+
+    <div class="card">
+      <h2>Choose date & time</h2>
+
+      <div class="grid">
+        <div>
+          <label for="date">Date</label>
+          <input id="date" type="date" required />
+        </div>
+
+        <div>
+          <label for="slot">Time slot</label>
+          <select id="slot" required>
+            <option value="">Select a slot…</option>
+            <option value="09:00-11:00">9:00am – 11:00am</option>
+            <option value="11:30-13:30">11:30am – 1:30pm</option>
+            <option value="14:00-16:00">2:00pm – 4:00pm</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="note" style="margin-top:1rem;">
+        <strong>Session rules</strong><br>
+        • Max <strong>16 children</strong> per session<br>
+        • At least <strong>1 adult</strong> must be included in every booking
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Tickets</h2>
+
+      <label for="baby">0–12 months (£4)</label>
+      <input id="baby" type="number" min="0" value="0" />
+
+      <label for="child">1–8 years (£7.60)</label>
+      <input id="child" type="number" min="0" value="0" />
+
+      <label for="adult">Adults (£2) <small>(minimum 1)</small></label>
+      <input id="adult" type="number" min="1" value="1" />
+
+      <div class="totalBox" id="total">Total: £0.00</div>
+      <div id="msg" class=""></div>
+
+      <button class="btn" id="payBtn" type="button">Pay securely with Stripe</button>
+
+      <p style="margin-top:1rem;"><small>
+        Note: Capacity enforcement across multiple bookings requires a booking database.
+        This page enforces your rules per booking now, and we can add “live capacity / sold out”
+        in the next step.
+      </small></p>
+    </div>
+  </main>
+
+  <script>
+    // Prices
+    const PRICE_BABY = 4.00;
+    const PRICE_CHILD = 7.60;
+    const PRICE_ADULT = 2.00;
+
+    const dateEl = document.getElementById('date');
+    const slotEl = document.getElementById('slot');
+    const babyEl = document.getElementById('baby');
+    const childEl = document.getElementById('child');
+    const adultEl = document.getElementById('adult');
+    const totalEl = document.getElementById('total');
+    const msgEl = document.getElementById('msg');
+    const payBtn = document.getElementById('payBtn');
+
+    function asInt(el){
+      const n = parseInt(el.value || '0', 10);
+      return Number.isFinite(n) ? n : 0;
+    }
+
+    function validate(){
+      const baby = asInt(babyEl);
+      const child = asInt(childEl);
+      const adult = asInt(adultEl);
+
+      const kids = baby + child;
+
+      if (!dateEl.value) return { ok:false, message:'Please choose a date.' };
+      if (!slotEl.value) return { ok:false, message:'Please choose a time slot.' };
+      if (adult < 1) return { ok:false, message:'At least 1 adult is required.' };
+      if (kids < 1) return { ok:false, message:'Please add at least 1 child.' };
+      if (kids > 16) return { ok:false, message:'Max 16 children per session. Please reduce children.' };
+
+      return { ok:true, message:'Looks good — ready to pay.' };
+    }
+
+    function calcTotal(){
+      const baby = asInt(babyEl);
+      const child = asInt(childEl);
+      const adult = asInt(adultEl);
+
+      const total = (baby * PRICE_BABY) + (child * PRICE_CHILD) + (adult * PRICE_ADULT);
+      totalEl.textContent = `Total: £${total.toFixed(2)}`;
+
+      const v = validate();
+      msgEl.textContent = v.message;
+      msgEl.className = v.ok ? 'ok' : 'err';
+      payBtn.disabled = !v.ok;
+      payBtn.style.opacity = v.ok ? '1' : '.6';
+
+      return total;
+    }
+
+    [dateEl, slotEl, babyEl, childEl, adultEl].forEach(el => el.addEventListener('input', calcTotal));
+    calcTotal();
+
+    payBtn.addEventListener('click', async () => {
+      const v = validate();
+      if (!v.ok) { calcTotal(); return; }
+
+      const payload = {
+        date: dateEl.value,
+        slot: slotEl.value,
+        baby: asInt(babyEl),
+        child: asInt(childEl),
+        adult: asInt(adultEl),
+      };
+
+      // Call our Vercel serverless function to create a Stripe Checkout session
+      try{
+        const res = await fetch('/api/create-checkout-session', {
+          method: 'POST',
+          headers: { 'Content-Type':'application/json' },
+          body: JSON.stringify(payload)
+        });
+
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error || 'Payment setup failed.');
+
+        // Redirect to Stripe Checkout
+        window.location.href = data.url;
+      }catch(err){
+        msgEl.textContent = err.message || 'Something went wrong.';
+        msgEl.className = 'err';
+      }
+    });
+  </script>
+</body>
+</html>
