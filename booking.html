@@ -4,37 +4,152 @@
   <meta charset="UTF-8" />
   <title>Booking – The Storybook Play Cafe</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <style>
-    :root{ --forest:#3e5f4a; --moss:#6b8f71; --paper:#f6f8f4; --ink:#2f3e2f; --card:#fff; --soft:#eef3ee; }
-    *{ box-sizing:border-box; }
-    body{ margin:0; font-family:Georgia,serif; background:var(--paper); color:var(--ink); line-height:1.6; }
-    header{ background:var(--forest); color:#fff; padding:1.25rem 1rem; }
-    .topbar{ max-width:980px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; gap:1rem; }
-    nav a{ color:#fff; text-decoration:none; margin-left:.9rem; opacity:.95; }
-    .wrap{ max-width:980px; margin:0 auto; padding:1.25rem 1rem 2.5rem; }
-    .card{ background:var(--card); border-radius:18px; padding:1.5rem; margin:1rem 0; box-shadow:0 6px 18px rgba(0,0,0,.08); }
-    h1{ margin:.25rem 0 0; font-size:1.8rem; }
-    h2{ margin:0 0 .75rem; color:var(--forest); font-size:1.25rem; }
-    label{ display:block; font-weight:700; margin-top:1rem; }
-    input, select{ width:100%; padding:.85rem; border-radius:12px; border:1px solid #cfd8cf; margin-top:.35rem; background:#fff; }
-    .grid{ display:grid; grid-template-columns:1fr; gap:1rem; }
-    .note{ background:var(--soft); padding:1rem; border-radius:14px; }
-    .btn{
-      display:inline-block; background:var(--moss); color:#fff; border:none;
-      padding:.95rem 1.15rem; border-radius:999px; font-size:1rem; text-decoration:none;
-      width:100%; margin-top:1.25rem;
+    :root{
+      --forest:#2f4b3a;
+      --deep:#1f3428;
+      --moss:#6b8f71;
+      --paper:#f6f8f4;
+      --ink:#223225;
+      --card:#ffffff;
+      --soft:#eef3ee;
+      --gold:#f3d58b;
     }
-    .err{ color:#8b1e1e; font-weight:700; margin-top:.75rem; }
-    .ok{ color:#1f6d2b; font-weight:700; margin-top:.75rem; }
-    .totalBox{ font-size:1.15rem; font-weight:700; margin-top:1rem; }
-    small{ opacity:.9; }
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      font-family: Georgia, serif;
+      background:
+        radial-gradient(1000px 600px at 20% 10%, rgba(243,213,139,.35), transparent 60%),
+        radial-gradient(900px 500px at 80% 0%, rgba(107,143,113,.25), transparent 55%),
+        linear-gradient(180deg, #f7faf6 0%, #f0f5f0 40%, #eef3ee 100%);
+      color:var(--ink);
+      line-height:1.6;
+    }
+
+    header{
+      background: linear-gradient(180deg, rgba(47,75,58,1), rgba(31,52,40,1));
+      color:#fff;
+      padding: 1.25rem 1rem 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .topbar{
+      max-width:980px;
+      margin:0 auto;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:1rem;
+    }
+    .brand{ font-weight:700; letter-spacing:.2px; }
+    nav a{ color:#fff; text-decoration:none; margin-left:.9rem; opacity:.95; }
+    nav a:hover{ opacity:1; }
+
+    .wrap{ max-width:980px; margin:0 auto; padding:1.25rem 1rem 2.5rem; }
+
+    .card{
+      background: rgba(255,255,255,.92);
+      border: 1px solid rgba(47,75,58,.08);
+      border-radius: 22px;
+      padding: 1.5rem;
+      margin: 1rem 0;
+      box-shadow: 0 10px 30px rgba(0,0,0,.08);
+      backdrop-filter: blur(6px);
+    }
+
+    h1{ margin:.25rem 0 0; font-size: clamp(1.6rem, 6vw, 2.2rem); color: var(--deep); }
+    h2{ margin:0 0 .5rem; color: var(--forest); font-size: 1.2rem; }
+
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:.5rem;
+      background: rgba(243,213,139,.35);
+      border: 1px solid rgba(243,213,139,.6);
+      color: var(--deep);
+      padding: .4rem .7rem;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: .9rem;
+    }
+
+    .coming{
+      display:grid;
+      gap:.75rem;
+      margin-top: .75rem;
+    }
+
+    .ctaRow{
+      display:flex;
+      flex-wrap:wrap;
+      gap:.75rem;
+      margin-top:1rem;
+    }
+
+    .btn{
+      display:inline-block;
+      background: var(--moss);
+      color:#fff;
+      border:none;
+      padding:.9rem 1.15rem;
+      border-radius:999px;
+      font-size:1rem;
+      text-decoration:none;
+    }
+    .btn.secondary{
+      background: rgba(31,52,40,.92);
+    }
+
+    .note{
+      background: rgba(238,243,238,.85);
+      border: 1px dashed rgba(47,75,58,.25);
+      padding: 1rem;
+      border-radius: 16px;
+    }
+
+    /* little mushroom divider (pure CSS) */
+    .mushrow{ display:flex; gap:10px; margin-top: 12px; opacity:.9; }
+    .mush{
+      width:18px; height:18px; position:relative;
+    }
+    .mush:before{
+      content:"";
+      position:absolute;
+      width:18px;height:11px;
+      left:0;top:0;
+      background:#d46a6a;
+      border-radius: 12px 12px 10px 10px;
+      box-shadow: inset 0 -2px 0 rgba(0,0,0,.08);
+    }
+    .mush:after{
+      content:"";
+      position:absolute;
+      width:7px;height:10px;
+      left:5.5px;top:8px;
+      background:#f3e8d2;
+      border-radius: 6px;
+      box-shadow: inset 0 -2px 0 rgba(0,0,0,.07);
+    }
+    .mush:nth-child(2):before{ background:#c553a0; }
+    .mush:nth-child(3):before{ background:#8a62d4; }
+    .mush:nth-child(4):before{ background:#d4882f; }
+
+    footer{
+      text-align:center;
+      padding: 1rem 1rem 2rem;
+      opacity:.8;
+      font-size:.9rem;
+    }
   </style>
 </head>
 
 <body>
   <header>
     <div class="topbar">
-      <div style="font-weight:700;">The Storybook Play Cafe</div>
+      <div class="brand">The Storybook Play Cafe</div>
       <nav>
         <a href="index.html">Home</a>
         <a href="booking.html">Booking</a>
@@ -45,149 +160,41 @@
 
   <main class="wrap">
     <div class="card">
-      <h1>Book a Play Session</h1>
-      <p><strong>Open Monday – Sunday</strong></p>
-      <p><small>Prices are shown here during booking.</small></p>
-    </div>
+      <div class="badge">✨ Bookings coming soon</div>
+      <h1>Online bookings aren’t open yet</h1>
 
-    <div class="card">
-      <h2>Choose date & time</h2>
+      <div class="coming">
+        <p>
+          We’re getting everything ready behind the scenes for opening day.
+          Our online booking system will go live soon.
+        </p>
 
-      <div class="grid">
-        <div>
-          <label for="date">Date</label>
-          <input id="date" type="date" required />
+        <div class="note">
+          <strong>Play Sessions (preview)</strong><br>
+          Open Monday – Sunday<br>
+          9:00–11:00 · 11:30–1:30 · 2:00–4:00
+          <div class="mushrow" aria-hidden="true">
+            <div class="mush"></div><div class="mush"></div><div class="mush"></div><div class="mush"></div>
+          </div>
+          <p style="margin: .75rem 0 0;">
+            Session rules when booking opens:<br>
+            • Max <strong>16 children</strong> per session<br>
+            • At least <strong>1 adult</strong> required per booking
+          </p>
         </div>
 
-        <div>
-          <label for="slot">Time slot</label>
-          <select id="slot" required>
-            <option value="">Select a slot…</option>
-            <option value="09:00-11:00">9:00am – 11:00am</option>
-            <option value="11:30-13:30">11:30am – 1:30pm</option>
-            <option value="14:00-16:00">2:00pm – 4:00pm</option>
-          </select>
+        <div class="ctaRow">
+          <a class="btn secondary" href="contact.html">Contact us</a>
+          <a class="btn" href="index.html">Back to Home</a>
         </div>
+
+        <p style="margin-top:.75rem; font-size:.95rem; opacity:.9;">
+          (When you’re ready to go live, we’ll switch Stripe from Test mode to Live mode in a couple of minutes.)
+        </p>
       </div>
-
-      <div class="note" style="margin-top:1rem;">
-        <strong>Session rules</strong><br>
-        • Max <strong>16 children</strong> per session<br>
-        • At least <strong>1 adult</strong> must be included in every booking
-      </div>
-    </div>
-
-    <div class="card">
-      <h2>Tickets</h2>
-
-      <label for="baby">0–12 months (£4)</label>
-      <input id="baby" type="number" min="0" value="0" />
-
-      <label for="child">1–8 years (£7.60)</label>
-      <input id="child" type="number" min="0" value="0" />
-
-      <label for="adult">Adults (£2) <small>(minimum 1)</small></label>
-      <input id="adult" type="number" min="1" value="1" />
-
-      <div class="totalBox" id="total">Total: £0.00</div>
-      <div id="msg" class=""></div>
-
-      <button class="btn" id="payBtn" type="button">Pay securely with Stripe</button>
-
-      <p style="margin-top:1rem;"><small>
-        Note: Capacity enforcement across multiple bookings requires a booking database.
-        This page enforces your rules per booking now, and we can add “live capacity / sold out”
-        in the next step.
-      </small></p>
     </div>
   </main>
 
-  <script>
-    // Prices
-    const PRICE_BABY = 4.00;
-    const PRICE_CHILD = 7.60;
-    const PRICE_ADULT = 2.00;
-
-    const dateEl = document.getElementById('date');
-    const slotEl = document.getElementById('slot');
-    const babyEl = document.getElementById('baby');
-    const childEl = document.getElementById('child');
-    const adultEl = document.getElementById('adult');
-    const totalEl = document.getElementById('total');
-    const msgEl = document.getElementById('msg');
-    const payBtn = document.getElementById('payBtn');
-
-    function asInt(el){
-      const n = parseInt(el.value || '0', 10);
-      return Number.isFinite(n) ? n : 0;
-    }
-
-    function validate(){
-      const baby = asInt(babyEl);
-      const child = asInt(childEl);
-      const adult = asInt(adultEl);
-
-      const kids = baby + child;
-
-      if (!dateEl.value) return { ok:false, message:'Please choose a date.' };
-      if (!slotEl.value) return { ok:false, message:'Please choose a time slot.' };
-      if (adult < 1) return { ok:false, message:'At least 1 adult is required.' };
-      if (kids < 1) return { ok:false, message:'Please add at least 1 child.' };
-      if (kids > 16) return { ok:false, message:'Max 16 children per session. Please reduce children.' };
-
-      return { ok:true, message:'Looks good — ready to pay.' };
-    }
-
-    function calcTotal(){
-      const baby = asInt(babyEl);
-      const child = asInt(childEl);
-      const adult = asInt(adultEl);
-
-      const total = (baby * PRICE_BABY) + (child * PRICE_CHILD) + (adult * PRICE_ADULT);
-      totalEl.textContent = `Total: £${total.toFixed(2)}`;
-
-      const v = validate();
-      msgEl.textContent = v.message;
-      msgEl.className = v.ok ? 'ok' : 'err';
-      payBtn.disabled = !v.ok;
-      payBtn.style.opacity = v.ok ? '1' : '.6';
-
-      return total;
-    }
-
-    [dateEl, slotEl, babyEl, childEl, adultEl].forEach(el => el.addEventListener('input', calcTotal));
-    calcTotal();
-
-    payBtn.addEventListener('click', async () => {
-      const v = validate();
-      if (!v.ok) { calcTotal(); return; }
-
-      const payload = {
-        date: dateEl.value,
-        slot: slotEl.value,
-        baby: asInt(babyEl),
-        child: asInt(childEl),
-        adult: asInt(adultEl),
-      };
-
-      // Call our Vercel serverless function to create a Stripe Checkout session
-      try{
-        const res = await fetch('/api/create-checkout-session', {
-          method: 'POST',
-          headers: { 'Content-Type':'application/json' },
-          body: JSON.stringify(payload)
-        });
-
-        const data = await res.json();
-        if (!res.ok) throw new Error(data.error || 'Payment setup failed.');
-
-        // Redirect to Stripe Checkout
-        window.location.href = data.url;
-      }catch(err){
-        msgEl.textContent = err.message || 'Something went wrong.';
-        msgEl.className = 'err';
-      }
-    });
-  </script>
+  <footer>© The Storybook Play Cafe</footer>
 </body>
 </html>
