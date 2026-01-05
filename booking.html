@@ -5,46 +5,262 @@
   <title>Booking – The Storybook Play Cafe</title>
   <meta name="viewport" content="width=device-width,initial-scale=1" />
 
+  <!-- Storybook Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Nunito:wght@400;600&display=swap" rel="stylesheet">
+
   <style>
     :root{
       --forest:#214033;
       --deep:#162a22;
       --moss:#5f8a6d;
-      --moss2:#4d7a5f;
       --gold:#f3d58b;
       --paper:#fbf7ef;
       --paper2:#f4eddc;
       --ink:#1f2b22;
       --muted:#4a5a50;
-      --radius:22px;
-      --shadow: 0 18px 50px rgba(0,0,0,.14);
-      --shadow2: 0 10px 28px rgba(0,0,0,.10);
     }
 
     *{ box-sizing:border-box; }
+
     body{
       margin:0;
+      font-family:"Nunito", sans-serif;
       color:var(--ink);
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      line-height:1.55;
+      line-height:1.6;
       background:
-        radial-gradient(1200px 700px at 20% 0%, rgba(243,213,139,.40), transparent 60%),
+        radial-gradient(1200px 700px at 20% 0%, rgba(243,213,139,.45), transparent 60%),
         radial-gradient(900px 520px at 85% 10%, rgba(95,138,109,.28), transparent 55%),
-        radial-gradient(900px 520px at 50% 95%, rgba(33,64,51,.10), transparent 60%),
         linear-gradient(180deg, #fbfbf7 0%, #f4f7f0 50%, #eef3ee 100%);
       overflow-x:hidden;
     }
 
-    /* Nav */
-    .navWrap{
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      backdrop-filter: blur(10px);
-      background: rgba(22,42,34,.72);
-      border-bottom: 1px solid rgba(255,255,255,.10);
+    /* Fairy lights */
+    .fairy-lights{
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      background:
+        radial-gradient(circle at 12% 18%, rgba(255,255,200,.9) 0 2px, transparent 3px),
+        radial-gradient(circle at 38% 30%, rgba(255,255,200,.7) 0 2px, transparent 3px),
+        radial-gradient(circle at 70% 22%, rgba(255,255,200,.8) 0 2px, transparent 3px),
+        radial-gradient(circle at 82% 58%, rgba(255,255,200,.6) 0 2px, transparent 3px);
+      animation: glow 8s ease-in-out infinite alternate;
+      opacity:.55;
     }
+    @keyframes glow{
+      from{ transform: translateY(0); }
+      to{ transform: translateY(-14px); }
+    }
+
+    /* Navigation */
     .nav{
-      max-width: 1040px;
-      margin: 0 auto;
-      padding: .9rem
+      position:sticky;
+      top:0;
+      z-index:50;
+      background:rgba(22,42,34,.75);
+      backdrop-filter: blur(8px);
+      padding:.9rem 1rem;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      color:#fff;
+    }
+
+    .brand{
+      font-family:"Cormorant Garamond", serif;
+      font-weight:700;
+      font-size:1.3rem;
+      display:flex;
+      align-items:center;
+      gap:.5rem;
+    }
+
+    nav a{
+      color:#fff;
+      text-decoration:none;
+      margin-left:.9rem;
+      font-weight:600;
+    }
+
+    /* Page header */
+    .page-head{
+      text-align:center;
+      padding:2.5rem 1rem 1.5rem;
+    }
+
+    .page-head h1{
+      font-family:"Cormorant Garamond", serif;
+      font-size:clamp(2.2rem,7vw,3rem);
+      margin:0;
+      color:var(--forest);
+    }
+
+    .page-head p{
+      max-width:52ch;
+      margin:.9rem auto 0;
+      color:var(--muted);
+    }
+
+    .badge{
+      display:inline-block;
+      margin-top:1rem;
+      padding:.45rem .85rem;
+      border-radius:999px;
+      background:rgba(243,213,139,.35);
+      font-weight:700;
+    }
+
+    /* Content */
+    .wrap{
+      max-width:900px;
+      margin:0 auto;
+      padding:1rem 1rem 3rem;
+    }
+
+    .panel{
+      background:linear-gradient(180deg, var(--paper), var(--paper2));
+      border-radius:22px;
+      padding:1.6rem;
+      margin-top:1.5rem;
+      box-shadow:0 10px 30px rgba(0,0,0,.12);
+    }
+
+    h2{
+      font-family:"Cormorant Garamond", serif;
+      color:var(--forest);
+      font-size:1.6rem;
+      margin-top:0;
+    }
+
+    .sessions{
+      display:grid;
+      gap:.9rem;
+      margin-top:1rem;
+    }
+
+    .session{
+      background:rgba(255,255,255,.7);
+      border-radius:18px;
+      padding:1rem;
+      display:flex;
+      gap:.75rem;
+      align-items:flex-start;
+      border:1px dashed rgba(33,64,51,.25);
+    }
+
+    .note{
+      margin-top:1.2rem;
+      background:rgba(255,255,255,.75);
+      border-radius:18px;
+      padding:1rem;
+      color:var(--muted);
+    }
+
+    .cta{
+      margin-top:1.5rem;
+      text-align:center;
+    }
+
+    .btn{
+      display:inline-block;
+      padding:.95rem 1.3rem;
+      border-radius:999px;
+      background:linear-gradient(180deg, var(--moss), #4c735a);
+      color:#fff;
+      font-weight:700;
+      text-decoration:none;
+    }
+
+    /* Mushrooms */
+    .mushrow{
+      display:flex;
+      justify-content:center;
+      gap:10px;
+      margin-top:1rem;
+      opacity:.95;
+    }
+    .mush{
+      width:20px;height:20px;position:relative;
+    }
+    .mush:before{
+      content:"";
+      position:absolute;
+      width:20px;height:12px;
+      background:#d46a6a;
+      border-radius:14px 14px 10px 10px;
+    }
+    .mush:after{
+      content:"";
+      position:absolute;
+      width:8px;height:11px;
+      left:6px;top:8px;
+      background:#f3e8d2;
+      border-radius:7px;
+    }
+    .mush:nth-child(2):before{ background:#c553a0; }
+    .mush:nth-child(3):before{ background:#8a62d4; }
+    .mush:nth-child(4):before{ background:#d4882f; }
+
+    footer{
+      text-align:center;
+      padding:2rem 1rem;
+      opacity:.8;
+      font-size:.9rem;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="fairy-lights" aria-hidden="true"></div>
+
+  <div class="nav">
+    <div class="brand">🧚 The Storybook Play Cafe</div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="booking.html">Booking</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+
+  <header class="page-head">
+    <h1>Booking a Play Session</h1>
+    <p>
+      We’re preparing our magical woodland for opening day.
+      Online bookings will be available very soon.
+    </p>
+    <div class="badge">✨ Bookings coming soon</div>
+  </header>
+
+  <main class="wrap">
+    <section class="panel">
+      <h2>🐉 Play Sessions</h2>
+      <p><strong>Open Monday – Sunday</strong></p>
+
+      <div class="sessions">
+        <div class="session">🌤️ <strong>Morning session</strong><br>9:30am – 11:00am</div>
+        <div class="session">🍃 <strong>Mid-morning session</strong><br>11:30am – 1:30pm</div>
+        <div class="session">🌙 <strong>Afternoon session</strong><br>2:00pm – 4:00pm</div>
+      </div>
+
+      <div class="mushrow" aria-hidden="true">
+        <div class="mush"></div><div class="mush"></div><div class="mush"></div><div class="mush"></div>
+      </div>
+
+      <div class="note">
+        <strong>When booking opens:</strong><br>
+        • Maximum <strong>16 children</strong> per session<br>
+        • At least <strong>1 adult</strong> required per booking<br>
+        • Prices will be shown during booking only
+      </div>
+
+      <div class="cta">
+        <a class="btn" href="contact.html">Contact us for updates ✨</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>© The Storybook Play Cafe</footer>
+</body>
+</html>
