@@ -3,198 +3,48 @@
 <head>
   <meta charset="UTF-8" />
   <title>Booking – The Storybook Play Cafe</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
 
   <style>
     :root{
-      --forest:#2f4b3a;
-      --deep:#1f3428;
-      --moss:#6b8f71;
-      --paper:#f6f8f4;
-      --ink:#223225;
-      --card:#ffffff;
-      --soft:#eef3ee;
+      --forest:#214033;
+      --deep:#162a22;
+      --moss:#5f8a6d;
+      --moss2:#4d7a5f;
       --gold:#f3d58b;
+      --paper:#fbf7ef;
+      --paper2:#f4eddc;
+      --ink:#1f2b22;
+      --muted:#4a5a50;
+      --radius:22px;
+      --shadow: 0 18px 50px rgba(0,0,0,.14);
+      --shadow2: 0 10px 28px rgba(0,0,0,.10);
     }
+
     *{ box-sizing:border-box; }
     body{
       margin:0;
-      font-family: Georgia, serif;
-      background:
-        radial-gradient(1000px 600px at 20% 10%, rgba(243,213,139,.35), transparent 60%),
-        radial-gradient(900px 500px at 80% 0%, rgba(107,143,113,.25), transparent 55%),
-        linear-gradient(180deg, #f7faf6 0%, #f0f5f0 40%, #eef3ee 100%);
       color:var(--ink);
-      line-height:1.6;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      line-height:1.55;
+      background:
+        radial-gradient(1200px 700px at 20% 0%, rgba(243,213,139,.40), transparent 60%),
+        radial-gradient(900px 520px at 85% 10%, rgba(95,138,109,.28), transparent 55%),
+        radial-gradient(900px 520px at 50% 95%, rgba(33,64,51,.10), transparent 60%),
+        linear-gradient(180deg, #fbfbf7 0%, #f4f7f0 50%, #eef3ee 100%);
+      overflow-x:hidden;
     }
 
-    header{
-      background: linear-gradient(180deg, rgba(47,75,58,1), rgba(31,52,40,1));
-      color:#fff;
-      padding: 1.25rem 1rem 1rem;
+    /* Nav */
+    .navWrap{
       position: sticky;
       top: 0;
-      z-index: 10;
+      z-index: 50;
+      backdrop-filter: blur(10px);
+      background: rgba(22,42,34,.72);
+      border-bottom: 1px solid rgba(255,255,255,.10);
     }
-    .topbar{
-      max-width:980px;
-      margin:0 auto;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:1rem;
-    }
-    .brand{ font-weight:700; letter-spacing:.2px; }
-    nav a{ color:#fff; text-decoration:none; margin-left:.9rem; opacity:.95; }
-    nav a:hover{ opacity:1; }
-
-    .wrap{ max-width:980px; margin:0 auto; padding:1.25rem 1rem 2.5rem; }
-
-    .card{
-      background: rgba(255,255,255,.92);
-      border: 1px solid rgba(47,75,58,.08);
-      border-radius: 22px;
-      padding: 1.5rem;
-      margin: 1rem 0;
-      box-shadow: 0 10px 30px rgba(0,0,0,.08);
-      backdrop-filter: blur(6px);
-    }
-
-    h1{ margin:.25rem 0 0; font-size: clamp(1.6rem, 6vw, 2.2rem); color: var(--deep); }
-    h2{ margin:0 0 .5rem; color: var(--forest); font-size: 1.2rem; }
-
-    .badge{
-      display:inline-flex;
-      align-items:center;
-      gap:.5rem;
-      background: rgba(243,213,139,.35);
-      border: 1px solid rgba(243,213,139,.6);
-      color: var(--deep);
-      padding: .4rem .7rem;
-      border-radius: 999px;
-      font-weight: 700;
-      font-size: .9rem;
-    }
-
-    .coming{
-      display:grid;
-      gap:.75rem;
-      margin-top: .75rem;
-    }
-
-    .ctaRow{
-      display:flex;
-      flex-wrap:wrap;
-      gap:.75rem;
-      margin-top:1rem;
-    }
-
-    .btn{
-      display:inline-block;
-      background: var(--moss);
-      color:#fff;
-      border:none;
-      padding:.9rem 1.15rem;
-      border-radius:999px;
-      font-size:1rem;
-      text-decoration:none;
-    }
-    .btn.secondary{
-      background: rgba(31,52,40,.92);
-    }
-
-    .note{
-      background: rgba(238,243,238,.85);
-      border: 1px dashed rgba(47,75,58,.25);
-      padding: 1rem;
-      border-radius: 16px;
-    }
-
-    /* little mushroom divider (pure CSS) */
-    .mushrow{ display:flex; gap:10px; margin-top: 12px; opacity:.9; }
-    .mush{
-      width:18px; height:18px; position:relative;
-    }
-    .mush:before{
-      content:"";
-      position:absolute;
-      width:18px;height:11px;
-      left:0;top:0;
-      background:#d46a6a;
-      border-radius: 12px 12px 10px 10px;
-      box-shadow: inset 0 -2px 0 rgba(0,0,0,.08);
-    }
-    .mush:after{
-      content:"";
-      position:absolute;
-      width:7px;height:10px;
-      left:5.5px;top:8px;
-      background:#f3e8d2;
-      border-radius: 6px;
-      box-shadow: inset 0 -2px 0 rgba(0,0,0,.07);
-    }
-    .mush:nth-child(2):before{ background:#c553a0; }
-    .mush:nth-child(3):before{ background:#8a62d4; }
-    .mush:nth-child(4):before{ background:#d4882f; }
-
-    footer{
-      text-align:center;
-      padding: 1rem 1rem 2rem;
-      opacity:.8;
-      font-size:.9rem;
-    }
-  </style>
-</head>
-
-<body>
-  <header>
-    <div class="topbar">
-      <div class="brand">The Storybook Play Cafe</div>
-      <nav>
-        <a href="index.html">Home</a>
-        <a href="booking.html">Booking</a>
-        <a href="contact.html">Contact</a>
-      </nav>
-    </div>
-  </header>
-
-  <main class="wrap">
-    <div class="card">
-      <div class="badge">✨ Bookings coming soon</div>
-      <h1>Online bookings aren’t open yet</h1>
-
-      <div class="coming">
-        <p>
-          We’re getting everything ready behind the scenes for opening day.
-          Our online booking system will go live soon.
-        </p>
-
-        <div class="note">
-          <strong>Play Sessions (preview)</strong><br>
-          Open Monday – Sunday<br>
-          9:00–11:00 · 11:30–1:30 · 2:00–4:00
-          <div class="mushrow" aria-hidden="true">
-            <div class="mush"></div><div class="mush"></div><div class="mush"></div><div class="mush"></div>
-          </div>
-          <p style="margin: .75rem 0 0;">
-            Session rules when booking opens:<br>
-            • Max <strong>16 children</strong> per session<br>
-            • At least <strong>1 adult</strong> required per booking
-          </p>
-        </div>
-
-        <div class="ctaRow">
-          <a class="btn secondary" href="contact.html">Contact us</a>
-          <a class="btn" href="index.html">Back to Home</a>
-        </div>
-
-        <p style="margin-top:.75rem; font-size:.95rem; opacity:.9;">
-          (When you’re ready to go live, we’ll switch Stripe from Test mode to Live mode in a couple of minutes.)
-        </p>
-      </div>
-    </div>
-  </main>
-
-  <footer>© The Storybook Play Cafe</footer>
-</body>
-</html>
+    .nav{
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: .9rem
