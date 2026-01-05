@@ -5,10 +5,10 @@
   <title>The Storybook Play Cafe</title>
   <meta name="viewport" content="width=device-width,initial-scale=1" />
 
-  <!-- Storybook Fonts -->
+  <!-- Magical fantasy fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Nunito:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Uncial+Antiqua&family=Fondamento&family=Nunito:wght@400;600&display=swap" rel="stylesheet">
 
   <style>
     :root{
@@ -17,15 +17,15 @@
       --moss:#5f8a6d;
       --gold:#f3d58b;
 
-      --paper:#fbf7ef;
-      --paper2:#f4eddc;
+      --paper:#fff7ea;
+      --paper2:#f5ead3;
 
       --ink:#1f2b22;
-      --muted:#4a5a50;
+      --muted:#43554b;
 
-      --radius:24px;
-      --shadow: 0 18px 50px rgba(0,0,0,.14);
-      --shadow2: 0 10px 28px rgba(0,0,0,.10);
+      --radius:26px;
+      --shadow: 0 18px 50px rgba(0,0,0,.16);
+      --shadow2: 0 10px 28px rgba(0,0,0,.12);
     }
 
     *{ box-sizing:border-box; }
@@ -33,28 +33,31 @@
       margin:0;
       font-family:"Nunito", sans-serif;
       color:var(--ink);
-      line-height:1.6;
+      line-height:1.65;
       background:
-        radial-gradient(1200px 700px at 20% 0%, rgba(243,213,139,.35), transparent 60%),
-        radial-gradient(900px 520px at 85% 10%, rgba(95,138,109,.22), transparent 55%),
+        radial-gradient(1200px 800px at 20% 0%, rgba(243,213,139,.42), transparent 60%),
+        radial-gradient(900px 520px at 85% 10%, rgba(95,138,109,.26), transparent 55%),
+        radial-gradient(900px 520px at 50% 95%, rgba(33,64,51,.12), transparent 60%),
         linear-gradient(180deg, #fbfbf7 0%, #f4f7f0 50%, #eef3ee 100%);
       overflow-x:hidden;
     }
 
-    /* fairy light dust (subtle) */
-    .fairy-dust{
-      position:fixed; inset:0; pointer-events:none;
+    /* Twinkles + fairy lights */
+    .magicOverlay{
+      position:fixed; inset:0; pointer-events:none; z-index:0;
       background:
-        radial-gradient(circle at 12% 18%, rgba(255,255,210,.85) 0 2px, transparent 3px),
-        radial-gradient(circle at 38% 30%, rgba(255,255,210,.65) 0 2px, transparent 3px),
-        radial-gradient(circle at 70% 22%, rgba(255,255,210,.7) 0 2px, transparent 3px),
-        radial-gradient(circle at 82% 58%, rgba(255,255,210,.55) 0 2px, transparent 3px);
-      opacity:.35;
-      animation: glow 9s ease-in-out infinite alternate;
+        radial-gradient(circle at 10% 14%, rgba(255,255,210,.9) 0 2px, transparent 3px),
+        radial-gradient(circle at 32% 24%, rgba(255,255,210,.7) 0 1.7px, transparent 3px),
+        radial-gradient(circle at 72% 18%, rgba(255,255,210,.8) 0 2px, transparent 3px),
+        radial-gradient(circle at 88% 52%, rgba(255,255,210,.6) 0 2px, transparent 3px),
+        radial-gradient(circle at 18% 70%, rgba(255,255,255,.7) 0 1.5px, transparent 3px),
+        radial-gradient(circle at 80% 80%, rgba(255,255,255,.65) 0 1.6px, transparent 3px);
+      opacity:.42;
+      animation: drift 10s ease-in-out infinite alternate;
     }
-    @keyframes glow{ from{ transform:translateY(0);} to{ transform:translateY(-14px);} }
+    @keyframes drift{ from{ transform:translateY(0);} to{ transform:translateY(-18px);} }
 
-    /* nav */
+    /* Nav */
     .nav{
       position:sticky; top:0; z-index:50;
       background:rgba(22,42,34,.78);
@@ -65,58 +68,59 @@
       color:#fff;
     }
     .brand{
-      font-family:"Cormorant Garamond", serif;
-      font-weight:700;
-      font-size:1.35rem;
+      font-family:"Uncial Antiqua", serif;
+      font-size:1.15rem;
       display:flex; align-items:center; gap:.55rem;
+      letter-spacing:.3px;
     }
-    .brand .acorn{
-      width:14px;height:14px;border-radius:999px;
+    .brand .orb{
+      width:12px;height:12px;border-radius:999px;
       background:var(--gold);
-      box-shadow:0 0 0 6px rgba(243,213,139,.18);
+      box-shadow:0 0 0 7px rgba(243,213,139,.18), 0 0 18px rgba(243,213,139,.25);
     }
-    nav a{ color:#fff; text-decoration:none; margin-left:.9rem; font-weight:600; opacity:.95; }
+    nav a{
+      color:#fff; text-decoration:none; margin-left:.9rem;
+      font-weight:700; opacity:.95;
+    }
     nav a:hover{ opacity:1; text-decoration:underline; text-underline-offset:6px; }
 
-    /* section wrappers (distinct “areas”) */
-    .wrap{ max-width:1040px; margin:0 auto; padding: 0 1rem; }
-
+    /* Hero */
     .heroArea{
+      position:relative;
+      z-index:1;
+      padding: 3.2rem 0 2.2rem;
       background: linear-gradient(180deg, var(--forest), var(--deep));
       color:#fff;
-      padding: 3.2rem 0 2.4rem;
-      position:relative;
       overflow:hidden;
     }
     .heroArea:before{
-      /* canopy blobs */
       content:"";
-      position:absolute; inset:-70px -60px auto -60px; height:260px;
+      position:absolute; inset:-70px -60px auto -60px; height:280px;
       background:
         radial-gradient(190px 140px at 10% 80%, rgba(0,0,0,.18), transparent 70%),
-        radial-gradient(260px 180px at 32% 60%, rgba(0,0,0,.16), transparent 70%),
-        radial-gradient(240px 170px at 58% 85%, rgba(0,0,0,.15), transparent 70%),
-        radial-gradient(270px 190px at 84% 55%, rgba(0,0,0,.16), transparent 70%);
-      opacity:.55;
-      pointer-events:none;
+        radial-gradient(280px 190px at 32% 60%, rgba(0,0,0,.16), transparent 70%),
+        radial-gradient(260px 180px at 58% 85%, rgba(0,0,0,.15), transparent 70%),
+        radial-gradient(290px 200px at 84% 55%, rgba(0,0,0,.16), transparent 70%);
+      opacity:.58; pointer-events:none;
     }
-    .heroInner{
-      text-align:center;
-      position:relative;
-      z-index:2;
-    }
-    .heroInner h1{
-      margin:0;
-      font-family:"Cormorant Garamond", serif;
+
+    .wrap{ max-width:1040px; margin:0 auto; padding: 0 1rem; position:relative; z-index:2; }
+    .heroInner{ text-align:center; }
+
+    .heroTitle{
+      font-family:"Uncial Antiqua", serif;
       font-size: clamp(2.6rem, 8vw, 3.8rem);
-      line-height:1.05;
+      margin:0;
+      letter-spacing:.6px;
       text-shadow: 0 18px 30px rgba(0,0,0,.25);
     }
-    .heroInner p{
+    .heroLine{
       margin:.95rem auto 0;
       max-width: 56ch;
       font-size: 1.08rem;
       opacity:.96;
+      font-family:"Fondamento", cursive;
+      font-size: 1.35rem;
     }
     .pill{
       display:inline-flex; align-items:center; gap:.5rem;
@@ -125,7 +129,8 @@
       border-radius:999px;
       background: rgba(243,213,139,.22);
       border: 1px solid rgba(243,213,139,.35);
-      font-weight:800;
+      font-weight:900;
+      letter-spacing:.2px;
     }
     .ctaRow{
       display:flex; justify-content:center; flex-wrap:wrap;
@@ -136,7 +141,7 @@
       padding:.95rem 1.25rem;
       border-radius:999px;
       text-decoration:none;
-      font-weight:800;
+      font-weight:900;
       border:1px solid rgba(255,255,255,.14);
       box-shadow: 0 16px 32px rgba(0,0,0,.18);
       user-select:none;
@@ -144,59 +149,87 @@
     .btn.primary{ background: linear-gradient(180deg, var(--moss), #4c735a); color:#fff; }
     .btn.secondary{ background: rgba(255,255,255,.10); color:#fff; }
 
-    /* “hand-drawn” divider */
+    /* Wavy divider */
     .divider{
-      height: 70px;
+      height: 84px;
       background:
-        url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'><path d='M0,64 C140,96 240,22 380,54 C520,86 620,22 760,54 C900,86 980,20 1200,58 L1200,120 L0,120 Z' fill='%23fbf7ef'/></svg>")
+        url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'><path d='M0,64 C160,98 260,20 400,54 C540,88 650,18 800,54 C950,90 1030,18 1200,60 L1200,120 L0,120 Z' fill='%23fff7ea'/></svg>")
         bottom/100% 100% no-repeat;
       margin-top:-1px;
+      position:relative;
+      z-index:2;
     }
 
-    /* cards with slight “handmade” wobble */
+    /* Section “realms” */
+    .realm{
+      position:relative;
+      padding: 2.2rem 0;
+      z-index:1;
+    }
+    .realm.alt{
+      background:
+        radial-gradient(900px 260px at 20% 0%, rgba(95,138,109,.16), transparent 60%),
+        linear-gradient(180deg, rgba(255,247,234,.55), rgba(255,247,234,0));
+    }
+
     .card{
       background: linear-gradient(180deg, var(--paper), var(--paper2));
       border-radius: var(--radius);
-      padding: 1.6rem;
+      padding: 1.65rem;
       box-shadow: var(--shadow2);
-      border: 1px solid rgba(0,0,0,.08);
+      border: 1px solid rgba(0,0,0,.09);
       position:relative;
+      overflow:hidden;
     }
-    .card:after{
+    /* ornamental corners */
+    .card:before{
       content:"";
-      position:absolute; inset:10px;
-      border-radius: calc(var(--radius) - 10px);
-      border: 1px solid rgba(0,0,0,.06);
-      pointer-events:none;
-      transform: rotate(-.15deg);
+      position:absolute; inset:auto -22px -22px auto;
+      width: 190px; height: 190px; opacity:.26;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220' viewBox='0 0 220 220'><path d='M210 190c-55-10-78-33-88-88 55 10 78 33 88 88z' fill='%23214033'/><path d='M170 210c-35-7-49-21-56-56 35 7 49 21 56 56z' fill='%235f8a6d'/><path d='M210 135c-48 0-75-15-97-52 48 0 75 15 97 52z' fill='%23f3d58b'/></svg>");
+      background-size: cover; pointer-events:none;
     }
 
-    h2{
-      margin:0 0 .7rem;
-      font-family:"Cormorant Garamond", serif;
-      color: var(--forest);
-      font-size: 1.8rem;
-      letter-spacing:.2px;
+    /* Curved storybook headings */
+    .arched{
+      width: min(560px, 100%);
+      height: 120px;
+      margin: -10px auto 0;
+      display:block;
     }
-    .muted{ color: var(--muted); }
-
-    /* section areas */
-    .area{
-      padding: 2.2rem 0;
+    .arched text{
+      font-family:"Uncial Antiqua", serif;
+      font-size: 34px;
+      fill: var(--forest);
+      letter-spacing: 1.4px;
     }
-    .area.alt{
-      background:
-        radial-gradient(900px 260px at 20% 0%, rgba(95,138,109,.18), transparent 60%),
-        linear-gradient(180deg, rgba(251,247,239,.55), rgba(251,247,239,0));
+    .arched .glow{
+      filter: drop-shadow(0 10px 14px rgba(0,0,0,.14));
     }
 
-    /* sessions “clearing” */
+    /* Body story text */
+    .storyText{
+      color:var(--muted);
+      font-size: 1.05rem;
+      margin-top: .2rem;
+    }
+    .storyText::first-letter{
+      font-family:"Uncial Antiqua", serif;
+      font-size: 3.25rem;
+      float:left;
+      line-height:1;
+      margin-right:.45rem;
+      color: var(--moss);
+      text-shadow: 0 8px 18px rgba(0,0,0,.10);
+    }
+
+    /* Sessions */
     .sessions{
-      display:grid; gap:.85rem; margin-top: .9rem;
+      display:grid; gap:.9rem; margin-top: .6rem;
     }
     .slot{
-      background: rgba(255,255,255,.68);
-      border:1px dashed rgba(33,64,51,.22);
+      background: rgba(255,255,255,.70);
+      border:1px dashed rgba(33,64,51,.24);
       border-radius: 18px;
       padding: 1rem;
       display:flex; gap:.75rem; align-items:flex-start;
@@ -211,7 +244,23 @@
       font-size: 1.25rem;
     }
 
-    /* “café nook” bar */
+    /* gallery frames */
+    .gallery{
+      display:grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: .85rem;
+      margin-top: .8rem;
+    }
+    .frame{
+      height: 150px;
+      border-radius: 22px;
+      background:
+        radial-gradient(260px 170px at 30% 30%, rgba(243,213,139,.35), transparent 55%),
+        linear-gradient(135deg, rgba(95,138,109,.22), rgba(33,64,51,.12));
+      border:1px solid rgba(0,0,0,.09);
+      box-shadow: inset 0 0 0 7px rgba(255,255,255,.28);
+    }
+
     .woodBar{
       background: linear-gradient(180deg, rgba(22,42,34,.92), rgba(22,42,34,.92));
       color:#fff;
@@ -219,31 +268,17 @@
       padding: 1.3rem;
       box-shadow: var(--shadow);
       border: 1px solid rgba(255,255,255,.10);
+      font-family:"Fondamento", cursive;
+      font-size: 1.25rem;
     }
-    .woodBar a{ color:#fff; font-weight:800; text-decoration:underline; text-underline-offset:6px; }
-
-    /* gallery frames */
-    .gallery{
-      display:grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: .8rem;
-      margin-top: .9rem;
-    }
-    .frame{
-      height: 140px;
-      border-radius: 20px;
-      background:
-        radial-gradient(260px 170px at 30% 30%, rgba(243,213,139,.35), transparent 55%),
-        linear-gradient(135deg, rgba(95,138,109,.22), rgba(33,64,51,.12));
-      border:1px solid rgba(0,0,0,.08);
-      box-shadow: inset 0 0 0 7px rgba(255,255,255,.28);
-    }
+    .woodBar a{ color:#fff; font-weight:900; text-decoration:underline; text-underline-offset:6px; }
 
     footer{
       text-align:center;
       padding: 2rem 1rem 2.6rem;
-      opacity:.8;
+      opacity:.82;
       font-size:.95rem;
+      font-family:"Fondamento", cursive;
     }
 
     @media (min-width: 880px){
@@ -253,17 +288,16 @@
         gap: 1.2rem;
         align-items:start;
       }
-      .sessions{ grid-template-columns: 1fr; }
       .gallery{ grid-template-columns: repeat(4, 1fr); }
     }
   </style>
 </head>
 
 <body>
-  <div class="fairy-dust" aria-hidden="true"></div>
+  <div class="magicOverlay" aria-hidden="true"></div>
 
   <div class="nav">
-    <div class="brand"><span class="acorn" aria-hidden="true"></span> The Storybook Play Cafe</div>
+    <div class="brand"><span class="orb" aria-hidden="true"></span> The Storybook Play Cafe</div>
     <nav>
       <a href="index.html">Home</a>
       <a href="booking.html">Booking</a>
@@ -271,13 +305,13 @@
     </nav>
   </div>
 
-  <!-- HERO AREA -->
+  <!-- HERO -->
   <section class="heroArea">
     <div class="wrap">
       <div class="heroInner">
-        <h1>The Storybook Play Cafe</h1>
-        <p>Where little imaginations wander, play, and bloom 🌸</p>
-        <div class="pill">🍄 Bookings: Coming Soon</div>
+        <h1 class="heroTitle">The Storybook Play Cafe</h1>
+        <p class="heroLine">Where little imaginations wander, play, and bloom 🌸</p>
+        <div class="pill">✨ Bookings: Coming Soon</div>
         <div class="ctaRow">
           <a class="btn primary" href="booking.html">View Booking Info</a>
           <a class="btn secondary" href="contact.html">Contact Us</a>
@@ -287,64 +321,107 @@
   </section>
   <div class="divider" aria-hidden="true"></div>
 
-  <!-- WELCOME AREA -->
-  <section class="area">
+  <!-- WELCOME REALM -->
+  <section class="realm">
     <div class="wrap">
       <div class="card">
-        <h2>📖 A little welcome</h2>
-        <p class="muted">
-          Step into a cosy woodland play café inspired by storybook tales — a gentle, magical space
-          for little explorers (and a warm moment for grown-ups too).
+        <svg class="arched" viewBox="0 0 500 120" aria-label="A little welcome">
+          <path id="curveWelcome" d="M 50 90 Q 250 10 450 90" fill="transparent"></path>
+          <text class="glow">
+            <textPath href="#curveWelcome" startOffset="50%" text-anchor="middle">
+              A little welcome ✨
+            </textPath>
+          </text>
+        </svg>
+
+        <p class="storyText">
+          Step softly into our enchanted woodland — a storybook play café where tiny adventurers
+          discover hidden corners, magical moments, and gentle wonders (with a cosy pause for grown-ups too).
+        </p>
+
+        <p class="storyText" style="margin-top:.9rem;">
+          You might spot a flutter of fairies, a shy dragon, or a trail of twinkling lights guiding you through…
         </p>
       </div>
     </div>
   </section>
 
-  <!-- SESSIONS CLEARING -->
-  <section class="area alt">
+  <!-- SESSIONS REALM -->
+  <section class="realm alt">
     <div class="wrap">
       <div class="twoCol">
         <div class="card">
-          <h2>🐉 Play sessions</h2>
-          <p class="muted"><strong>Open Monday – Sunday</strong></p>
+          <svg class="arched" viewBox="0 0 500 120" aria-label="Play sessions">
+            <path id="curveSessions" d="M 50 90 Q 250 10 450 90" fill="transparent"></path>
+            <text class="glow">
+              <textPath href="#curveSessions" startOffset="50%" text-anchor="middle">
+                Play Sessions 🐉
+              </textPath>
+            </text>
+          </svg>
+
+          <p class="storyText" style="margin-top:-6px;"><strong>Open Monday – Sunday</strong></p>
 
           <div class="sessions">
             <div class="slot">
               <div class="icon" aria-hidden="true">🌤️</div>
-              <div><strong>Morning session</strong><br><span class="muted">9:30am – 11:00am</span></div>
+              <div><strong>Morning session</strong><br><span style="color:var(--muted);">9:30am – 11:00am</span></div>
             </div>
             <div class="slot">
               <div class="icon" aria-hidden="true">🍃</div>
-              <div><strong>Mid-morning session</strong><br><span class="muted">11:30am – 1:30pm</span></div>
+              <div><strong>Mid-morning session</strong><br><span style="color:var(--muted);">11:30am – 1:30pm</span></div>
             </div>
             <div class="slot">
               <div class="icon" aria-hidden="true">🌙</div>
-              <div><strong>Afternoon session</strong><br><span class="muted">2:00pm – 4:00pm</span></div>
+              <div><strong>Afternoon session</strong><br><span style="color:var(--muted);">2:00pm – 4:00pm</span></div>
             </div>
           </div>
         </div>
 
         <div class="card">
-          <h2>🧚 Café takeaway</h2>
-          <p class="muted"><strong>Our takeaway is open to everyone.</strong></p>
-          <p class="muted">Seating in the café area is reserved for guests booked onto a play session.</p>
-          <p class="muted">Everyone is welcome to purchase takeaway drinks and freshly baked treats, including those not booked onto a play session.</p>
+          <svg class="arched" viewBox="0 0 500 120" aria-label="Café takeaway">
+            <path id="curveCafe" d="M 50 90 Q 250 10 450 90" fill="transparent"></path>
+            <text class="glow">
+              <textPath href="#curveCafe" startOffset="50%" text-anchor="middle">
+                Café Takeaway ☕
+              </textPath>
+            </text>
+          </svg>
+
+          <p class="storyText" style="margin-top:-6px;">
+            Our café takeaway is open to everyone — even wandering travellers who aren’t booked onto a play session.
+          </p>
+          <p class="storyText">
+            Seating in the café area is reserved for guests booked onto a play session,
+            but everyone is welcome to purchase takeaway drinks and freshly baked treats.
+          </p>
 
           <div class="woodBar" style="margin-top:1rem;">
-            <strong>Bookings are coming soon.</strong><br>
-            Want updates? <a href="contact.html">Send us a message</a>.
+            Bookings are coming soon…<br>
+            Want a little update spell? <a href="contact.html">Send us a message ✨</a>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- GALLERY PATH -->
-  <section class="area">
+  <!-- GALLERY REALM -->
+  <section class="realm">
     <div class="wrap">
       <div class="card">
-        <h2>🍄 Gallery</h2>
-        <p class="muted">When you’re ready, we’ll add real photos here. For now, these are placeholder “storybook frames”.</p>
+        <svg class="arched" viewBox="0 0 500 120" aria-label="Gallery">
+          <path id="curveGallery" d="M 50 90 Q 250 10 450 90" fill="transparent"></path>
+          <text class="glow">
+            <textPath href="#curveGallery" startOffset="50%" text-anchor="middle">
+              Gallery 🍄
+            </textPath>
+          </text>
+        </svg>
+
+        <p class="storyText" style="margin-top:-6px;">
+          Soon, this little path will fill with real photos — twinkling corners, cosy play scenes, and woodland treasures.
+        </p>
+
         <div class="gallery" aria-hidden="true">
           <div class="frame"></div><div class="frame"></div><div class="frame"></div><div class="frame"></div>
         </div>
