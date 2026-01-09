@@ -125,25 +125,60 @@
     }
     nav a:hover{ opacity:1; text-decoration:underline; text-underline-offset:6px; }
 
-    /* Hero */
+  
+    }
     .heroArea{
-      position:relative;
-      z-index:1;
-      padding: 3.2rem 0 2.2rem;
-      background: linear-gradient(180deg, var(--forest), var(--deep));
-      color:#fff;
-      overflow:hidden;
-    }
-    .heroArea:before{
-      content:"";
-      position:absolute; inset:-70px -60px auto -60px; height:280px;
-      background:
-        radial-gradient(190px 140px at 10% 80%, rgba(0,0,0,.18), transparent 70%),
-        radial-gradient(280px 190px at 32% 60%, rgba(0,0,0,.16), transparent 70%),
-        radial-gradient(260px 180px at 58% 85%, rgba(0,0,0,.15), transparent 70%),
-        radial-gradient(290px 200px at 84% 55%, rgba(0,0,0,.16), transparent 70%);
-      opacity:.58; pointer-events:none;
-    }
+  position:relative;
+  z-index:1;
+  padding: 3.6rem 0 2.8rem;
+  color:#fff;
+  overflow:hidden;
+
+  /* woodland depth: layered gradients */
+  background:
+    radial-gradient(900px 520px at 15% 10%, rgba(243,213,139,.18), transparent 60%),
+    radial-gradient(700px 420px at 85% 0%, rgba(95,138,109,.26), transparent 55%),
+    radial-gradient(900px 520px at 50% 85%, rgba(0,0,0,.30), transparent 60%),
+    linear-gradient(180deg, #203a2d 0%, #162a22 55%, #0f1d18 100%);
+}
+
+/* canopy shadows + soft vignette (removes “flat block” feeling) */
+.heroArea::before{
+  content:"";
+  position:absolute;
+  inset:-120px -120px -120px -120px;
+  pointer-events:none;
+  opacity:.85;
+
+  background:
+    radial-gradient(500px 260px at 12% 12%, rgba(0,0,0,.34), transparent 70%),
+    radial-gradient(620px 320px at 38% 8%, rgba(0,0,0,.30), transparent 72%),
+    radial-gradient(640px 340px at 72% 10%, rgba(0,0,0,.28), transparent 74%),
+    radial-gradient(760px 420px at 50% 98%, rgba(0,0,0,.30), transparent 66%);
+}
+
+/* fireflies + magical sparkle overlay */
+.heroArea::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  opacity:.55;
+
+  background:
+    radial-gradient(circle at 12% 40%, rgba(255,255,210,.95) 0 2px, transparent 4px),
+    radial-gradient(circle at 26% 26%, rgba(255,255,210,.75) 0 2px, transparent 5px),
+    radial-gradient(circle at 40% 52%, rgba(255,255,255,.55) 0 1.5px, transparent 5px),
+    radial-gradient(circle at 58% 30%, rgba(255,255,210,.85) 0 2px, transparent 5px),
+    radial-gradient(circle at 74% 44%, rgba(255,255,210,.75) 0 2px, transparent 5px),
+    radial-gradient(circle at 88% 26%, rgba(255,255,255,.55) 0 1.6px, transparent 5px);
+  animation: fireflyFloat 9s ease-in-out infinite alternate;
+}
+
+@keyframes fireflyFloat{
+  from{ transform: translateY(0); }
+  to{ transform: translateY(-16px); }
+}
 
     .wrap{ max-width:1040px; margin:0 auto; padding: 0 1rem; position:relative; z-index:2; }
     .heroInner{ text-align:center; }
