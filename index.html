@@ -343,6 +343,21 @@ background-position: center;
       }
       .gallery{ grid-template-columns: repeat(4, 1fr); }
     }
+    /* FINAL NAV RESET – DO NOT DELETE */
+header, nav, .nav{
+  background: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+header::before, header::after,
+nav::before, nav::after,
+.nav::before, .nav::after{
+  content: none !important;
+  display: none !important;
+}
   </style>
 </head>
 
