@@ -57,15 +57,13 @@
   position:sticky;
   top:0;
   z-index:50;
-
-  background:
-    linear-gradient(
-      180deg,
-      rgba(32,58,45,.92) 0%,
-      rgba(32,58,45,.85) 55%,
-      rgba(32,58,45,.55) 100%
-    );
-
+    
+header,
+nav{
+  background: transparent;
+  backdrop-filter: none;
+  box-shadow: none;
+}
   backdrop-filter: blur(10px);
   padding:1.2rem 1.3rem 2.2rem;
 
@@ -114,10 +112,11 @@
       background:var(--gold);
       box-shadow:0 0 0 7px rgba(243,213,139,.18), 0 0 18px rgba(243,213,139,.25);
     }
-    nav a{
-      color:#fff; text-decoration:none; margin-left:.9rem;
-      font-weight:700; opacity:.95;
-    }
+    nav a,
+header a{
+  color: #ffffff;
+  text-shadow: 0 2px 8px rgba(0,0,0,.6);
+}
     nav a:hover{ opacity:1; text-decoration:underline; text-underline-offset:6px; }
 
   
