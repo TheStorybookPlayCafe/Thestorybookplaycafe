@@ -124,30 +124,21 @@
     nav a:hover{ opacity:1; text-decoration:underline; text-underline-offset:6px; }
 
   
-    }
     .heroArea{
-  position:relative;
-  z-index:1;
+  position: relative;
+  z-index: 1;
   padding: 3.6rem 0 2.8rem;
-  color:#fff;
-  overflow:hidden;
+  color: #fff;
+  overflow: hidden;
 
-  /* woodland depth: layered gradients */
+  /* woodland image + subtle dark overlay */
   background:
-  linear-gradient(rgba(10, 25, 15, 0.15), rgba(10, 25, 15, 0.25)),
-  url("images/file_00000000e96471f491c60ac828a1dcfc.png") center/cover no-repeat;
-}
-
-/* canopy shadows + soft vignette (removes “flat block” feeling) */
-
-  background:
-    radial-gradient(500px 260px at 12% 12%, rgba(0,0,0,.34), transparent 70%),
-    radial-gradient(620px 320px at 38% 8%, rgba(0,0,0,.30), transparent 72%),
-    radial-gradient(640px 340px at 72% 10%, rgba(0,0,0,.28), transparent 74%),
-    radial-gradient(760px 420px at 50% 98%, rgba(0,0,0,.30), transparent 66%);
-}
-    background-attachment: scroll;
+    linear-gradient(rgba(10,25,15,.25), rgba(10,25,15,.45)),
+    url("images/file_00000000e96471f491c60ac828a1dcfc.png") center / cover no-repeat;
+      background-attachment: scroll;
 background-position: center;
+}
+
 
 /* fireflies + magical sparkle overlay */
 .heroArea::after{
