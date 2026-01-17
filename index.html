@@ -235,22 +235,14 @@ border: 1px solid rgba(255,255,255,0.12);
     }
 
     .card{
-      background: linear-gradient(180deg, var(--paper), var(--paper2));
-      border-radius: var(--radius);
-      padding: 1.65rem;
-      box-shadow: var(--shadow2);
-      border: 1px solid rgba(0,0,0,.09);
-      position:relative;
-      overflow:hidden;
-    }
-    /* ornamental corners */
-    .card:before{
-      content:"";
-      position:absolute; inset:auto -22px -22px auto;
-      width: 190px; height: 190px; opacity:.26;
-      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220' viewBox='0 0 220 220'><path d='M210 190c-55-10-78-33-88-88 55 10 78 33 88 88z' fill='%23214033'/><path d='M170 210c-35-7-49-21-56-56 35 7 49 21 56 56z' fill='%235f8a6d'/><path d='M210 135c-48 0-75-15-97-52 48 0 75 15 97 52z' fill='%23f3d58b'/></svg>");
-      background-size: cover; pointer-events:none;
-    }
+  background: none;
+  border-radius: 0;
+  padding: 1.65rem;
+  box-shadow: none;
+  border: none;
+  position: relative;
+  overflow: visible;
+}
 
     /* Curved storybook headings */
     .arched{
