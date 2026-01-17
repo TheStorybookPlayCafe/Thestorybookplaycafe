@@ -134,18 +134,11 @@
 
   /* woodland depth: layered gradients */
   background:
-  radial-gradient(1200px 600px at 20% -10%, rgba(255,230,160,.25), transparent 60%),
-  radial-gradient(900px 520px at 80% 10%, rgba(160,220,190,.18), transparent 60%),
-  linear-gradient(180deg, rgba(20,55,40,.55), rgba(15,35,30,.45));
+  linear-gradient(rgba(10, 25, 15, 0.15), rgba(10, 25, 15, 0.25)),
+  url("images/file_00000000e96471f491c60ac828a1dcfc.png") center/cover no-repeat;
 }
 
 /* canopy shadows + soft vignette (removes “flat block” feeling) */
-.heroArea::before{
-  content:"";
-  position:absolute;
-  inset:-120px -120px -120px -120px;
-  pointer-events:none;
-  opacity:.45;
 
   background:
     radial-gradient(500px 260px at 12% 12%, rgba(0,0,0,.34), transparent 70%),
@@ -153,6 +146,8 @@
     radial-gradient(640px 340px at 72% 10%, rgba(0,0,0,.28), transparent 74%),
     radial-gradient(760px 420px at 50% 98%, rgba(0,0,0,.30), transparent 66%);
 }
+    background-attachment: scroll;
+background-position: center;
 
 /* fireflies + magical sparkle overlay */
 .heroArea::after{
@@ -189,7 +184,10 @@
   background: linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.06));
   border: 1px solid rgba(255,255,255,.14);
   box-shadow: 0 18px 50px rgba(0,0,0,.26);
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(3px);
+-webkit-backdrop-filter: blur(3px);
+background: rgba(20, 35, 25, 0.25);
+border: 1px solid rgba(255,255,255,0.12);
     }
 
   .heroTitle{
@@ -235,17 +233,6 @@
     }
     .btn.primary{ background: linear-gradient(180deg, var(--moss), #4c735a); color:#fff; }
     .btn.secondary{ background: rgba(255,255,255,.10); color:#fff; }
-
-    /* Wavy divider */
-    .divider{
-      height: 84px;
-      background:
-        url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'><path d='M0,64 C160,98 260,20 400,54 C540,88 650,18 800,54 C950,90 1030,18 1200,60 L1200,120 L0,120 Z' fill='%23fff7ea'/></svg>")
-        bottom/100% 100% no-repeat;
-      margin-top:-1px;
-      position:relative;
-      z-index:2;
-    }
 
     /* Section “realms” */
     .realm{
