@@ -54,21 +54,9 @@
   border: none;
   transform: none;
 }
-    /* Twinkles + fairy lights */
-    .magicOverlay{
-      position:fixed; inset:0; pointer-events:none; z-index:0;
-      background:
-        radial-gradient(circle at 10% 14%, rgba(255,255,210,.9) 0 2px, transparent 3px),
-        radial-gradient(circle at 32% 24%, rgba(255,255,210,.7) 0 1.7px, transparent 3px),
-        radial-gradient(circle at 72% 18%, rgba(255,255,210,.8) 0 2px, transparent 3px),
-        radial-gradient(circle at 88% 52%, rgba(255,255,210,.6) 0 2px, transparent 3px),
-        radial-gradient(circle at 18% 70%, rgba(255,255,255,.7) 0 1.5px, transparent 3px),
-        radial-gradient(circle at 80% 80%, rgba(255,255,255,.65) 0 1.6px, transparent 3px);
-      opacity:.42;
-      animation: drift 10s ease-in-out infinite alternate;
-    }
-    @keyframes drift{ from{ transform:translateY(0);} to{ transform:translateY(-18px);} }
-
+  
+.magicOverlay{ display: none; }
+    
     /* Nav */
   .nav{
   position:static;
