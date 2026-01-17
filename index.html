@@ -63,6 +63,7 @@ nav{
   background: transparent;
   backdrop-filter: none;
   box-shadow: none;
+  border: none;
 }
   padding:1.2rem 1.3rem 2.2rem;
 
@@ -70,31 +71,7 @@ nav{
   justify-content:space-between;
   align-items:center;
   color:#fff;
-
-  border-bottom-left-radius: 70px;
-  border-bottom-right-radius: 70px;
-
-  box-shadow:
-    0 12px 30px rgba(0,0,0,.25);
-    transform: rotate(-0.2deg);
-}
-    .nav::after{
-  content:"";
-  position:absolute;
-  left:0;
-  right:0;
-  bottom:-70px;
-  height:70px;
-
-  background:
-    linear-gradient(
-      180deg,
-      rgba(32,58,45,.55) 0%,
-      rgba(32,58,45,.25) 45%,
-      rgba(32,58,45,0) 100%
-    );
-
-  pointer-events:none;
+transform: rotate(-0.2deg);
 }
     .brand{
   font-family:"Fondamento", cursive;
