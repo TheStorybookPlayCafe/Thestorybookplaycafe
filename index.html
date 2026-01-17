@@ -78,21 +78,20 @@ gap: .8rem;
     
 header,
 
-    .brand{
+.brand{
   font-family:"Fondamento", cursive;
   font-size:1.25rem;
   display:flex;
   align-items:center;
+  justify-content:center;   /* 👈 THIS is the key */
   gap:.55rem;
   letter-spacing:.2px;
   font-weight:400;
+  width:100%;
 }
-    }
-    .brand .orb{
-      width:12px;height:12px;border-radius:999px;
-      background:var(--gold);
-      box-shadow:0 0 0 7px rgba(243,213,139,.18), 0 0 18px rgba(243,213,139,.25);
-    }
+  .brand .orb{
+  display:none;
+}
     nav a,
 header a{
   color: #ffffff;
@@ -110,11 +109,11 @@ nav a, nav a:hover{
   }
 
   nav{
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    gap: .9rem;
-  }
+  width:100%;
+  display:flex;
+  justify-content:center;
+  gap:1.4rem;
+}
   }
   .heroArea{
   position: relative;
