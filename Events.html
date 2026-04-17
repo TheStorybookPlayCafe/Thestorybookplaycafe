@@ -1,1 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Upcoming Events | The Storybook Play Cafe</title>
+  <style>
+    body{
+      margin:0;
+      font-family:"Georgia", serif;
+      color:#fff;
+      background:
+        linear-gradient(rgba(10,25,15,.18), rgba(10,25,15,.18)),
+        url("images/file_00000000e96471f491c60ac828a1dcfc.png") center / cover no-repeat fixed;
+    }
 
+    .nav{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      text-align:center;
+      gap:1rem;
+      padding:1.4rem 1.2rem;
+      background:transparent;
+    }
+
+    .brand{
+      font-family:"Fondamento", cursive;
+      font-size:1.25rem;
+      color:#fff;
+      text-decoration:none;
+      text-shadow:0 2px 8px rgba(0,0,0,.6);
+    }
+
+    nav{
+      display:flex;
+      justify-content:center;
+      gap:1.2rem;
+      flex-wrap:wrap;
+    }
+
+    nav a{
+      color:#fff;
+      text-decoration:none;
+      text-shadow:0 2px 8px rgba(0,0,0,.6);
+      font-size:1.05rem;
+    }
+
+    .wrap{
+      max-width:980px;
+      margin:0 auto;
+      padding:1rem 1rem 3rem;
+    }
+
+    .hero{
+      text-align:center;
+      padding:2rem 0 1.5rem;
+    }
+
+    .hero h1{
+      font-family:"Fondamento", cursive;
+      font-size:clamp(2.3rem, 8vw, 4rem);
+      margin:0;
+      text-shadow:0 4px 14px rgba(0,0,0,.7);
+    }
+
+    .hero p{
+      max-width:700px;
+      margin:1rem auto 0;
+      font-size:1.1rem;
+      color:rgba(255,255,255,.96);
+      text-shadow:0 2px 8px rgba(0,0,0,.75);
+    }
+
+    .eventsGrid{
+      display:grid;
+      gap:1.2rem;
+      margin-top:1.5rem;
+    }
+
+    .eventCard{
+      background:rgba(255,255,255,.16);
+      border:1px solid rgba(255,255,255,.18);
+      border-radius:22px;
+      padding:1.25rem;
+      box-shadow:0 10px 30px rgba(0,0,0,.22);
+      backdrop-filter:blur(4px);
+      -webkit-backdrop-filter:blur(4px);
+    }
+
+    .eventCard h2{
+      margin:0 0 .5rem;
+      font-family:"Fondamento", cursive;
+      font-size:1.8rem;
+      color:#fff;
+      text-shadow:0 2px 8px rgba(0,0,0,.6);
+    }
+
+    .eventMeta{
+      font-size:1rem;
+      font-weight:700;
+      color:#f7efd8;
+      margin-bottom:.7rem;
+      text-shadow:0 2px 8px rgba(0,0,0,.65);
+    }
+
+    .eventCard p{
+      margin:.4rem 0 0;
+      line-height:1.6;
+      color:rgba(255,255,255,.96);
+      text-shadow:0 2px 8px rgba(0,0,0,.65);
+    }
+
+    .btnRow{
+      margin-top:1rem;
+      display:flex;
+      flex-wrap:wrap;
+      gap:.8rem;
+    }
+
+    .btn{
+      display:inline-block;
+      padding:.9rem 1.2rem;
+      border-radius:999px;
+      text-decoration:none;
+      font-weight:700;
+      color:#fff;
+      border:1px solid rgba(255,255,255,.25);
+      text-shadow:0 2px 8px rgba(0,0,0,.4);
+    }
+
+    .btn.primary{
+      background:linear-gradient(180deg, #89a889, #6f8f73);
+    }
+
+    .btn.secondary{
+      background:rgba(255,255,255,.12);
+    }
+
+    footer{
+      text-align:center;
+      padding:2rem 1rem 3rem;
+      color:rgba(255,255,255,.9);
+      text-shadow:0 2px 8px rgba(0,0,0,.6);
+      font-size:.95rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="nav">
+    <a class="brand" href="index.html">The Storybook Play Cafe</a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="booking.html">Booking</a>
+      <a href="events.html">Upcoming Events</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+
+  <div class="wrap">
+    <section class="hero">
+      <h1>Upcoming Events ✨</h1>
+      <p>Take a look at the magical events coming soon at The Storybook Play Cafe and book your place below.</p>
+    </section>
+
+    <section class="eventsGrid">
+
+      <div class="eventCard">
+        <h2>Teddy Bears’ Picnic</h2>
+        <div class="eventMeta">Saturday 14 September · 10:00am – 11:30am</div>
+        <p>Bring your favourite teddy for a magical picnic morning with stories, songs, themed play and sweet treats.</p>
+        <div class="btnRow">
+          <a class="btn primary" href="PASTE-BOOKING-LINK-HERE" target="_blank" rel="noopener">Book this event</a>
+        </div>
+      </div>
+
+      <div class="eventCard">
+        <h2>Autumn Storytime & Craft</h2>
+        <div class="eventMeta">Wednesday 25 September · 1:00pm – 2:30pm</div>
+        <p>A cosy seasonal session with woodland stories, simple crafts and gentle imaginative play.</p>
+        <div class="btnRow">
+          <a class="btn primary" href="PASTE-BOOKING-LINK-HERE" target="_blank" rel="noopener">Book this event</a>
+        </div>
+      </div>
+
+      <div class="eventCard">
+        <h2>Princess & Dragon Afternoon</h2>
+        <div class="eventMeta">Sunday 6 October · 2:00pm – 3:30pm</div>
+        <p>Dress up, explore, play and enjoy a magical fantasy-themed event for little adventurers.</p>
+        <div class="btnRow">
+          <a class="btn primary" href="PASTE-BOOKING-LINK-HERE" target="_blank" rel="noopener">Book this event</a>
+        </div>
+      </div>
+
+    </section>
+  </div>
+
+  <footer>© The Storybook Play Cafe</footer>
+</body>
+</html>
