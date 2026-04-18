@@ -29,18 +29,14 @@
     }
 
     *{ box-sizing:border-box; }
-    body{
-      margin:0;
-      font-family:"Nunito", sans-serif;
-      color:var(--ink);
-      line-height:1.65;
-      background:
-        radial-gradient(1200px 800px at 20% 0%, rgba(243,213,139,.42), transparent 60%),
-        radial-gradient(900px 520px at 85% 10%, rgba(95,138,109,.26), transparent 55%),
-        radial-gradient(900px 520px at 50% 95%, rgba(33,64,51,.12), transparent 60%),
-        linear-gradient(180deg, #fbfbf7 0%, #f4f7f0 50%, #eef3ee 100%);
-      overflow-x:hidden;
-    }
+  body{
+  margin:0;
+  color:#fff;
+  background:
+    linear-gradient(rgba(10,25,15,.15), rgba(10,25,15,.15)),
+    url("images/file_00000000e96471f491c60ac828a1dcfc.png") center / cover no-repeat fixed;
+  overflow-x:hidden;
+}
 
     /* Twinkles + fairy lights */
     .magicOverlay{
@@ -64,7 +60,7 @@
   align-items:center;
   text-align:center;
   gap:.8rem;
-  padding:1.2rem 1rem;
+  padding:1.4rem 1.2rem;
   background:transparent;
   box-shadow:none;
   border:none;
@@ -83,16 +79,17 @@ nav a{
   text-shadow:0 2px 8px rgba(0,0,0,.6);
   font-size:1.05rem;
 }
-    .nav{
-      position:sticky; top:0; z-index:50;
-      background:rgba(22,42,34,.78);
-      backdrop-filter: blur(8px);
-      border-bottom:1px solid rgba(255,255,255,.10);
-      padding:.9rem 1rem;
-      display:flex; justify-content:space-between; align-items:center;
-      color:#fff;
-      transform: rotate(-0.2deg);
-    }
+  .nav{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  text-align:center;
+  gap:.8rem;
+  padding:1.4rem 1.2rem;
+  background:transparent;
+  box-shadow:none;
+  border:none;
+}
     .brand{
   font-family:"Fondamento", cursive;
   font-size:1.25rem;
@@ -147,36 +144,35 @@ nav a{
       font-size: 1.25rem;
     }
     .pill{
-      display:inline-flex; align-items:center; gap:.5rem;
-      margin-top:1.05rem;
-      padding:.45rem .9rem;
-      border-radius:999px;
-      background: rgba(243,213,139,.22);
-      border: 1px solid rgba(243,213,139,.35);
-      font-weight:900;
-      letter-spacing:.2px;
-      color: var(--deep);
-    }
+  display:inline-flex;
+  align-items:center;
+  margin-top:1.05rem;
+  padding:.6rem 1.2rem;
+  border-radius:999px;
+  background:rgba(255,255,255,0.15);
+  backdrop-filter:blur(6px);
+  color:#fff;
+  text-decoration:none;
+}
 
     /* Card */
     .card{
-      background: linear-gradient(180deg, var(--paper), var(--paper2));
-      border-radius: var(--radius);
-      padding: 1.65rem;
-      box-shadow: var(--shadow2);
-      border: 1px solid rgba(0,0,0,.09);
-      position:relative;
-      overflow:hidden;
-      margin: 1rem 0 2rem;
-    }
-    .card:before{
-      content:"";
-      position:absolute; inset:auto -22px -22px auto;
-      width: 190px; height: 190px; opacity:.26;
-      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220' viewBox='0 0 220 220'><path d='M210 190c-55-10-78-33-88-88 55 10 78 33 88 88z' fill='%23214033'/><path d='M170 210c-35-7-49-21-56-56 35 7 49 21 56 56z' fill='%235f8a6d'/><path d='M210 135c-48 0-75-15-97-52 48 0 75 15 97 52z' fill='%23f3d58b'/></svg>");
-      background-size: cover; pointer-events:none;
-    }
-
+  background: rgba(255,255,255,0.14);
+  border-radius: var(--radius);
+  padding: 1.65rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,.22);
+  border: 1px solid rgba(255,255,255,.18);
+  position: relative;
+  overflow: hidden;
+  margin: 1rem 0 2rem;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+    
+.card:before{
+  display:none;
+  content:none;
+}
     /* Curved headings */
     .arched{
       width: min(560px, 100%);
