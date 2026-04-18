@@ -68,7 +68,6 @@
       color:#fff;
       transform: rotate(-0.2deg);
     }
-    <a href="events.html">Upcoming Events</a>
     .brand{
   font-family:"Fondamento", cursive;
   font-size:1.25rem;
@@ -231,6 +230,47 @@
       .sessions{ grid-template-columns: repeat(3, 1fr); }
       .slot{ flex-direction:column; }
     }
+    .wrap{
+  max-width:980px;
+  margin:0 auto;
+  padding:1rem 1rem 3rem;
+}
+
+.hero{
+  text-align:center;
+  padding:2rem 0 1.5rem;
+}
+
+.hero h1{
+  font-family:"Fondamento", cursive;
+  font-size:clamp(2.3rem, 8vw, 4rem);
+  margin:0;
+  color:#fff;
+  text-shadow:0 4px 14px rgba(0,0,0,.7);
+}
+
+.hero p{
+  max-width:700px;
+  margin:1rem auto 1.2rem;
+  font-size:1.1rem;
+  color:rgba(255,255,255,.96);
+  text-shadow:0 2px 8px rgba(0,0,0,.75);
+}
+
+.btn{
+  display:inline-block;
+  padding:.9rem 1.2rem;
+  border-radius:999px;
+  text-decoration:none;
+  font-weight:700;
+  color:#fff;
+  border:1px solid rgba(255,255,255,.25);
+  text-shadow:0 2px 8px rgba(0,0,0,.4);
+}
+
+.btn.primary{
+  background:linear-gradient(180deg, #89a889, #6f8f73);
+}
   </style>
 </head>
 
@@ -238,21 +278,34 @@
   <div class="magicOverlay" aria-hidden="true"></div>
 
   <div class="nav">
-    <div class="brand"><span class="orb" aria-hidden="true"></span> The Storybook Play Cafe</div>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="booking.html">Booking</a>
-      <a href="events.html">Events</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-  </div>
+  <a class="brand" href="index.html">The Storybook Play Cafe</a>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="booking.html">Booking</a>
+    <a href="events.html">Upcoming Events</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</div>
 
   <div class="wrap">
-    <section class="pageHero">
-      <h1 class="pageTitle">Bookings</h1>
-      <p class="subtitle"> Book your play session here</p>
-      <div class="pill">✨ Play sessions for 0-6 years</div>
-    </section>
+  <section class="hero">
+    <h1>Bookings ✨</h1>
+    <p>Take a look at our play sessions and book your place below.</p>
+
+    <a class="btn primary"
+       href="https://bookwhen.com/thestorybookplaycafe48"
+       target="_blank"
+       rel="noopener">
+      ✨ Play sessions for 0-6 years
+    </a>
+    <a class="btn primary"
+   href="https://bookwhen.com/thestorybookplaycafe48"
+   target="_blank"
+   rel="noopener">
+   ✨ Book your play session
+</a>
+  </section>
+</div>
 
     <section class="card">
       <svg class="arched" viewBox="0 0 500 120" aria-label="Play sessions">
