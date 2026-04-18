@@ -30,17 +30,13 @@
 
     *{ box-sizing:border-box; }
     body{
-      margin:0;
-      font-family:"Nunito", sans-serif;
-      color:var(--ink);
-      line-height:1.65;
-      background:
-        radial-gradient(1200px 800px at 20% 0%, rgba(243,213,139,.42), transparent 60%),
-        radial-gradient(900px 520px at 85% 10%, rgba(95,138,109,.26), transparent 55%),
-        radial-gradient(900px 520px at 50% 95%, rgba(33,64,51,.12), transparent 60%),
-        linear-gradient(180deg, #fbfbf7 0%, #f4f7f0 50%, #eef3ee 100%);
-      overflow-x:hidden;
-    }
+  margin:0;
+  color:#fff;
+  background:
+    linear-gradient(rgba(10,25,15,.15), rgba(10,25,15,.15)),
+    url("images/file_00000000e96471f491c60ac828a1dcfc.png") center / cover no-repeat fixed;
+  overflow-x:hidden;
+}
 
     .magicOverlay{
       position:fixed; inset:0; pointer-events:none; z-index:0;
@@ -57,17 +53,17 @@
     @keyframes drift{ from{ transform:translateY(0);} to{ transform:translateY(-18px);} }
 
     /* Nav */
-    .nav{
-      position:sticky; top:0; z-index:50;
-      background:rgba(22,42,34,.78);
-      backdrop-filter: blur(8px);
-      border-bottom:1px solid rgba(255,255,255,.10);
-      padding:.9rem 1rem;
-      display:flex; justify-content:space-between; align-items:center;
-      color:#fff;
-      transform: rotate(-0.2deg);
-    }
-    <a href="events.html">Upcoming Events</a>
+  .nav{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  text-align:center;
+  gap:.8rem;
+  padding:1.4rem 1.2rem;
+  background:transparent;
+  box-shadow:none;
+  border:none;
+}
     .brand{
   font-family:"Fondamento", cursive;
   font-size:1.25rem;
@@ -76,6 +72,20 @@
   gap:.55rem;
   letter-spacing:.2px;
   font-weight:400;
+    
+}
+    .brand{
+  color:#fff;
+  text-decoration:none;
+  text-shadow:0 2px 8px rgba(0,0,0,.6);
+}
+
+.brand:link,
+.brand:visited,
+.brand:hover,
+.brand:active{
+  color:#fff;
+  text-decoration:none;
 }
     }
     .brand .orb{
@@ -96,38 +106,31 @@
       text-align:center;
     }
     .pageTitle{
-      font-family:"Uncial Antiqua", serif;
-      font-size: clamp(2rem, 6.6vw, 2.8rem);
-      margin: .3rem 0 0;
-      color: var(--forest);
-      letter-spacing:.5px;
-      text-shadow: 0 12px 22px rgba(0,0,0,.10);
-    }
-    .subtitle{
-      margin:.9rem auto 0;
-      max-width: 64ch;
-      color: var(--muted);
-      font-family:"Fondamento", cursive;
-      font-size: 1.25rem;
-    }
+  color:#fff;
+  text-shadow:0 4px 12px rgba(0,0,0,.7);
+}
+
+.subtitle{
+  color:#fff;
+  text-shadow:0 2px 10px rgba(0,0,0,.7);
+}
 
     .card{
-      background: linear-gradient(180deg, var(--paper), var(--paper2));
-      border-radius: var(--radius);
-      padding: 1.65rem;
-      box-shadow: var(--shadow2);
-      border: 1px solid rgba(0,0,0,.09);
-      position:relative;
-      overflow:hidden;
-      margin: 1rem 0 2rem;
-    }
+  background: rgba(255,255,255,0.10);
+  border-radius: var(--radius);
+  padding: 1.65rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,.22);
+  border: 1px solid rgba(255,255,255,.18);
+  position: relative;
+  overflow: hidden;
+  margin: 1rem 0 2rem;
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+}
     .card:before{
-      content:"";
-      position:absolute; inset:auto -22px -22px auto;
-      width: 190px; height: 190px; opacity:.26;
-      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220' viewBox='0 0 220 220'><path d='M210 190c-55-10-78-33-88-88 55 10 78 33 88 88z' fill='%23214033'/><path d='M170 210c-35-7-49-21-56-56 35 7 49 21 56 56z' fill='%235f8a6d'/><path d='M210 135c-48 0-75-15-97-52 48 0 75 15 97 52z' fill='%23f3d58b'/></svg>");
-      background-size: cover; pointer-events:none;
-    }
+  display:none;
+  content:none;
+}
 
     .arched{
       width: min(560px, 100%);
@@ -136,28 +139,26 @@
       display:block;
     }
     .arched text{
-      font-family:"Uncial Antiqua", serif;
-      font-size: 34px;
-      fill: var(--forest);
-      letter-spacing: 1.4px;
-    }
+  fill:#fff;
+}
     .arched .glow{
       filter: drop-shadow(0 10px 14px rgba(0,0,0,.14));
     }
 
-    .copy{ color: var(--muted); font-size: 1.05rem; margin-top:-6px; }
+    .copy,
+label,
+.card p{
+  color:#fff;
+  text-shadow:0 2px 10px rgba(0,0,0,.7);
+}
 
     label{ display:block; margin-top: 1rem; font-weight:900; color: var(--deep); }
-    input, textarea{
-      width:100%;
-      margin-top:.45rem;
-      padding: .95rem 1rem;
-      border-radius: 18px;
-      border: 1px solid rgba(0,0,0,.14);
-      background: rgba(255,255,255,.72);
-      font-size: 1rem;
-      outline: none;
-    }
+    input,
+textarea{
+  background: rgba(255,255,255,.88);
+  border: 1px solid rgba(255,255,255,.35);
+  border-radius: 18px;
+}
     textarea{ min-height: 150px; }
 
     .btn{
