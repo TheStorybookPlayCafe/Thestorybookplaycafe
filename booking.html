@@ -59,6 +59,31 @@
 
     /* Nav */
     .nav{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  text-align:center;
+  gap:.8rem;
+  padding:1.2rem 1rem;
+  background:transparent;
+  box-shadow:none;
+  border:none;
+}
+
+nav{
+  display:flex;
+  justify-content:center;
+  gap:1rem;
+  flex-wrap:wrap;
+}
+
+nav a{
+  color:#fff;
+  text-decoration:none;
+  text-shadow:0 2px 8px rgba(0,0,0,.6);
+  font-size:1.05rem;
+}
+    .nav{
       position:sticky; top:0; z-index:50;
       background:rgba(22,42,34,.78);
       backdrop-filter: blur(8px);
@@ -71,11 +96,21 @@
     .brand{
   font-family:"Fondamento", cursive;
   font-size:1.25rem;
+  color:#fff;
+  text-decoration:none;
+  text-shadow:0 2px 8px rgba(0,0,0,.6);
   display:flex;
   align-items:center;
   gap:.55rem;
   letter-spacing:.2px;
   font-weight:400;
+}
+    .brand:link,
+.brand:visited,
+.brand:hover,
+.brand:active{
+  color:#fff;
+  text-decoration:none;
 }
     }
     .brand .orb{
@@ -292,12 +327,6 @@
     <h1>Bookings ✨</h1>
     <p>Take a look at our play sessions and book your place below.</p>
 
-    <a class="btn primary"
-       href="https://bookwhen.com/thestorybookplaycafe48"
-       target="_blank"
-       rel="noopener">
-      ✨ Play sessions for 0-6 years
-    </a>
     <a class="btn primary"
    href="https://bookwhen.com/thestorybookplaycafe48"
    target="_blank"
