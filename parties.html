@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Parties | The Storybook Play Cafe</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fondamento:ital@0;1&family=Uncial+Antiqua&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --radius: 26px;
+      --white: #fff;
+      --shadow: 0 10px 30px rgba(0,0,0,.22);
+      --gold: #e8d38c;
+      --bronze: #b9855a;
+      --silver: #c9ced6;
+      --forest: #6f8f6f;
+    }
+
+    *{ box-sizing:border-box; }
+
+    body{
+      margin:0;
+      font-family:"Nunito", sans-serif;
+      color:#fff;
+      background:
+        linear-gradient(rgba(10,25,15,.15), rgba(10,25,15,.15)),
+        url("images/file_00000000e96471f491c60ac828a1dcfc.png") center / cover no-repeat fixed;
+      overflow-x:hidden;
+    }
+
+    .nav{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      text-align:center;
+      gap:.8rem;
+      padding:1.4rem 1.2rem;
+      background:transparent;
+      box-shadow:none;
+      border:none;
+    }
+
+    .brand{
+      font-family:"Fondamento", cursive;
+      font-size:1.25rem;
+      color:#fff;
+      text-decoration:none;
+      text-shadow:0 2px 8px rgba(0,0,0,.6);
+    }
+
+    .brand:link,
+    .brand:visited,
+    .brand:hover,
+    .brand:active{
+      color:#fff;
+      text-decoration:none;
+    }
+
+    nav{
+      display:flex;
+      justify-content:center;
+      gap:1.2rem;
+      flex-wrap:wrap;
+    }
+
+    nav a{
+      color:#fff;
+      text-decoration:none;
+      text-shadow:0 2px 8px rgba(0,0,0,.6);
+      font-size:1.05rem;
+      font-weight:700;
+    }
+
+    .wrap{
+      max-width:1040px;
+      margin:0 auto;
+      padding:0 1rem 2rem;
+    }
+
+    .hero{
+      text-align:center;
+      padding:1.4rem 0 1.2rem;
+    }
+
+    .hero h1{
+      margin:0;
+      font-family:"Uncial Antiqua", serif;
+      font-size:clamp(2.3rem, 8vw, 4rem);
+      color:#fff;
+      text-shadow:0 4px 14px rgba(0,0,0,.7);
+    }
+
+    .hero p{
+      max-width:760px;
+      margin:1rem auto 0;
+      font-size:1.15rem;
+      color:rgba(255,255,255,.96);
+      text-shadow:0 2px 8px rgba(0,0,0,.75);
+    }
+
+    .packagesGrid{
+      display:grid;
+      gap:1.2rem;
+      margin-top:1.4rem;
+    }
+
+    .partyCard{
+      background:rgba(255,255,255,.12);
+      border:1px solid rgba(255,255,255,.18);
+      border-radius:22px;
+      padding:1.25rem;
+      box-shadow:var(--shadow);
+      backdrop-filter:blur(4px);
+      -webkit-backdrop-filter:blur(4px);
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+    }
+
+    .partyCard h2{
+      margin:0 0 .35rem;
+      font-family:"Fondamento", cursive;
+      font-size:2rem;
+      color:#fff;
+      text-shadow:0 2px 10px rgba(0,0,0,.7);
+    }
+
+    .partyBadge{
+      display:inline-block;
+      margin-bottom:.8rem;
+      padding:.4rem .8rem;
+      border-radius:999px;
+      font-weight:800;
+      font-size:.95rem;
+      color:#1f2a24;
+      background:rgba(255,255,255,.88);
+    }
+
+    .bronze{ background: rgba(185,133,90,.9); color:#fff; }
+    .silver{ background: rgba(201,206,214,.95); color:#1f2a24; }
+    .gold{ background: rgba(232,211,140,.95); color:#1f2a24; }
+
+    .partyCard p{
+      margin:.3rem 0 1rem;
+      font-size:1.05rem;
+      line-height:1.7;
+      color:#fff;
+      text-shadow:0 2px 10px rgba(0,0,0,.7);
+    }
+
+    .partyCard ul{
+      margin:0 0 1rem 1.1rem;
+      padding:0;
+      color:#fff;
+      text-shadow:0 2px 10px rgba(0,0,0,.7);
+      line-height:1.8;
+    }
+
+    .price{
+      font-size:1.35rem;
+      font-weight:800;
+      margin:.2rem 0 1rem;
+      color:#fff;
+      text-shadow:0 2px 10px rgba(0,0,0,.7);
+    }
+
+    .btnRow{
+      margin-top:.4rem;
+    }
+
+    .btn{
+      display:inline-block;
+      padding:.9rem 1.2rem;
+      border-radius:999px;
+      text-decoration:none;
+      font-weight:800;
+      color:#fff;
+      border:1px solid rgba(255,255,255,.25);
+      text-shadow:0 2px 8px rgba(0,0,0,.4);
+      box-shadow:0 10px 24px rgba(0,0,0,.18);
+    }
+
+    .btn.primary{
+      background:linear-gradient(180deg, #89a889, #6f8f6f);
+    }
+
+    .contactBox{
+      margin-top:1.4rem;
+      background:rgba(255,255,255,.10);
+      border:1px solid rgba(255,255,255,.18);
+      border-radius:22px;
+      padding:1.3rem;
+      box-shadow:var(--shadow);
+      backdrop-filter:blur(4px);
+      -webkit-backdrop-filter:blur(4px);
+      text-align:center;
+    }
+
+    .contactBox h3{
+      margin:0 0 .6rem;
+      font-family:"Fondamento", cursive;
+      font-size:1.8rem;
+      color:#fff;
+      text-shadow:0 2px 10px rgba(0,0,0,.7);
+    }
+
+    .contactBox p{
+      margin:0 0 1rem;
+      color:#fff;
+      text-shadow:0 2px 10px rgba(0,0,0,.7);
+      line-height:1.7;
+    }
+
+    footer{
+      text-align:center;
+      padding:1.5rem 1rem 2rem;
+      color:#fff;
+      text-shadow:0 2px 8px rgba(0,0,0,.7);
+    }
+
+    @media (min-width: 820px){
+      .packagesGrid{
+        grid-template-columns: repeat(3, 1fr);
+        align-items:stretch;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="nav">
+    <a class="brand" href="index.html">The Storybook Play Cafe</a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="https://bookwhen.com/thestorybookplaycafe48" target="_blank" rel="noopener">Booking</a>
+      <a href="events.html">Upcoming Events</a>
+      <a href="parties.html">Parties</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+
+  <div class="wrap">
+    <section class="hero">
+      <h1>Parties 🎉</h1>
+      <p>
+        Celebrate in our magical storybook setting with a party package to suit your little one.
+        Explore our Bronze, Silver and Gold packages below, then get in touch to book your date.
+      </p>
+    </section>
+
+    <section class="packagesGrid">
+      <div class="partyCard">
+        <div>
+          <h2>Bronze Package</h2>
+          <div class="partyBadge bronze">Bronze</div>
+          <div class="price">£225</div>
+          <p>A lovely simple celebration package for a magical party at The Storybook Play Cafe.</p>
+          <ul>
+            <li>Exclusive use of our play cafe for 2 hours</li>
+            <li>Dedicated party table area</li>
+            <li>Self catered</li>
+            <li>Self decorated by you, the party host</li>
+            <li>Available for private hire on Saturdays or Sundays, 2:45pm-4:45pm</li>
+          </ul>
+        </div>
+        <div class="btnRow">
+          <a class="btn primary" href="mailto:thestorybookplaycafe@outlook.com?subject=Bronze%20Party%20Enquiry">Enquire about Bronze ✨</a>
+        </div>
+      </div>
+
+      <div class="partyCard">
+        <div>
+          <h2>Silver Package</h2>
+          <div class="partyBadge silver">Silver</div>
+          <div class="price">£275</div>
+          <p>A step up with extra special touches to make the celebration feel even more magical.</p>
+          <ul>
+            <li>Exclusive use of our play cafe for 2 hours</li>
+            <li>Snack plates and drinks provided for every child</li>
+            <li>Self decorated by you, the party host</li>
+            <li>Available for private hire on Saturdays or Sundays, 12pm-2pm / 2:45pm-4:45pm</li>
+          </ul>
+        </div>
+        <div class="btnRow">
+          <a class="btn primary" href="mailto:thestorybookplaycafe@outlook.com?subject=Silver%20Party%20Enquiry">Enquire about Silver ✨</a>
+        </div>
+      </div>
+
+      <div class="partyCard">
+        <div>
+          <h2>Gold Package</h2>
+          <div class="partyBadge gold">Gold</div>
+          <div class="price">£355</div>
+          <p>Our premium party package for a truly unforgettable celebration in our enchanted space.</p>
+          <ul>
+            <li>Exclusive use of our play cafe for 2 hours</li>
+            <li>Snack plates and drinks provided for every child</li>
+            <li>Nibbles and a hot or cold drink provided for every adult</li>
+            <li>Party decorations provided by us</li>
+            <li>Available for private hire on Fridays, Saturdays or Sundays, 9:30am-11:30am / 12pm-2pm / 2:45pm-4:45pm</li>
+          </ul>
+        </div>
+        <div class="btnRow">
+          <a class="btn primary" href="mailto:thestorybookplaycafe@outlook.com?subject=Gold%20Party%20Enquiry">Enquire about Gold ✨</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="contactBox">
+      <h3>Ready to book a party? ✨</h3>
+      <p>
+        We’d love to help you plan a magical celebration. Tap below to email us and we’ll chat through dates,
+        package options and all the lovely little details.
+      </p>
+      <a class="btn primary" href="mailto:thestorybookplaycafe@outlook.com?subject=Party%20Booking%20Enquiry">Contact us to book a party</a>
+    </section>
+  </div>
+
+  <footer>© The Storybook Play Cafe</footer>
+
+</body>
+</html>
