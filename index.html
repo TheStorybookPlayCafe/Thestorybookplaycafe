@@ -371,6 +371,21 @@ nav::before, nav::after,
   margin-top: 0.4rem;
   text-shadow: 0 1px 6px rgba(0,0,0,0.6);
     }
+
+    .featuredBadge{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  margin:1.5rem auto;
+  padding:0 1rem;
+}
+
+.featuredBadge img{
+  width:min(340px, 90%);
+  height:auto;
+  display:block;
+  filter:drop-shadow(0 8px 18px rgba(0,0,0,.35));
+}
   </style>
 </head>
 
@@ -396,6 +411,9 @@ nav::before, nav::after,
         <p class="heroLine">Where little imaginations wander, play, and bloom 🌸</p>
         <p class="heroLine"> Suitable for 0-6 years old</p>
         <p class="location">Bishops Court, Daventry, Northamptonshire, NN11 4NP</p>
+        <div class="featuredBadge">
+  <img src="images/TA as featured in_pink.png" alt="As featured in Toddle About Magazine">
+</div>
         <div class="ctaRow">
           <a class="btn primary"
    href="https://bookwhen.com/thestorybookplaycafe48"
